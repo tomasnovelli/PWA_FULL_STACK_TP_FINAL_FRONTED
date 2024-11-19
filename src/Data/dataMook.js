@@ -1,5 +1,5 @@
 export const DATA_CONTACT = [
-    {
+/*     {
         name: 'Messi',
         thumbnail: '/images/messi-world-cup.jpg',
         lastConection: '19/12/2022',
@@ -184,5 +184,5 @@ export const DATA_CONTACT = [
                 id: 35
             },
         ]
-    }
+    } */
 ]

@@ -27,6 +27,13 @@ const Contacts = () => {
                             <i className="bi bi-person-plus-fill"></i>
                         </button>
                     </Link>
+                    {
+                        contactListData.length === 0 &&
+                        <div className='noContacts'>
+                            <span>You don't have any contacts yet..</span>
+                            <i className="bi bi-emoji-frown"></i>
+                        </div>
+                    }
                     <ContactList dataMock={contactListData} />
                     <ContactListFooter activeSite={navigationState}/>
                 </div>
