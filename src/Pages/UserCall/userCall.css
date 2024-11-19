@@ -1,0 +1,106 @@
+.userCall{
+    height: 100vh;
+    background-image: url('/images/background-img-wsp.jpg');
+    display: flex;
+    flex-direction: column;
+}
+.callEncryption{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;  
+    font-size: 13px;
+    padding: 10px;
+    width: 100%;
+    font-weight: 500;
+}
+.lockIconCall{
+    font-size: 16px;
+}
+.userInfoCardCall{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.callContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+.callButtons{
+    background-color: var(--textArea-color);
+    width: 100%;
+    height: 12%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 25px;
+}
+.btn-cutCallContainer{
+    color: white;
+    background-color: red;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 17px;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+}
+.btn-cutCall{
+    font-size: 24px;
+    margin-bottom: 3px;
+}
+
+@media screen and (min-width: 1200px){
+    .callEncryption{
+        gap: 12px;  
+        font-size: 16px;
+    }
+    .lockIconCall{
+        font-size: 18px;
+    }
+    .userInfoCardCall h2{
+        font-size: 28px;
+    }
+    .userInfoCardCall span{
+        font-size: 16px;
+    }
+    .callButtons{
+        font-size: 35px;
+    }
+    .btn-cutCallContainer{
+        width: 45px;
+        height: 45px;
+    }
+    .btn-cutCall{
+        font-size: 26px;
+    }
+}
+
+@media screen and (min-width: 1680px){
+    .callEncryption{
+        gap: 12px;  
+        font-size: 22px;
+    }
+    .lockIconCall{
+        font-size: 25px;
+    }
+    .userInfoCardCall h2{
+        font-size: 40px;
+    }
+    .userInfoCardCall span{
+        font-size: 25px;
+    }
+    .callButtons{
+        font-size: 50px;
+    }
+    .btn-cutCallContainer{
+        width: 65px;
+        height: 65px;
+    }
+    .btn-cutCall{
+        font-size: 40px;
+    }
+}

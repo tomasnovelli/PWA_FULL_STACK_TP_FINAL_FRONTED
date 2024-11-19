@@ -1,0 +1,18 @@
+.chatBox{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 100vh;
+    margin-top: 8px;
+}
+
+
+.chatBox::-webkit-scrollbar{
+    width: 4px;
+}
+  .chatBox::-webkit-scrollbar-thumb {
+    background-color: var(--app-color);    /* color of the scroll thumb */
+    border-radius: 20px;       
+  }
+

@@ -1,0 +1,70 @@
+.contacts{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.contactSearch{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px 5px 0px;
+}
+.contactSearchInput{
+    width: 95%;
+    height: 35px;
+    border: none;
+    border-radius: 15px;
+    padding-left: 15px;
+    background-color: var(--textArea-color);
+    font-weight: 500;
+}
+.contactSearchInput:focus{
+    outline: 1px solid var(--app-color) ;
+}
+.btn-addContact{
+    background-color: var(--app-color);
+    font-size: 25px;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 3px rgba(99, 99, 99, 0.616);
+    position: fixed;
+    bottom: 78px;
+    right: 25px;
+}
+
+@media screen and (min-width: 1200px) {
+    .contactSearchInput{
+        width: 90%;
+        height: 40px;
+        margin-top: 5px;
+        font-size: 15px;
+    }
+    .btn-addContact{
+        font-size: 33px;
+        width: 62px;
+        height: 62px;
+        bottom: 100px;
+        right: 45px;
+        border-radius: 15px;
+    }
+}
+
+@media screen and (min-width: 1680px){
+    .contactSearchInput{
+        width: 83%;
+        height: 55px;
+        border-radius: 15px;
+        margin-top: 8px;
+        font-size: 20px;
+    }
+    .btn-addContact{
+        font-size: 40px;
+        width: 75px;
+        height: 75px;
+        bottom: 120px;
+        right: 135px;
+    }
+}

@@ -1,0 +1,60 @@
+.communityCardsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 94%;
+}
+.postCards{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid var(--app-color);
+    border-radius: 20px;
+    padding: 10px;
+    background-color: var(--textArea-color);
+}
+.postUserId{
+    margin-left: 48%;
+}
+.postTitle{
+    font-size: 16px;
+}
+.postBody{
+    font-size: 13px;
+}
+
+@media screen and (min-width: 980px) {
+    .communityCardsContainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: unset;
+        gap: 10px;
+        height: 100%;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .postCards{
+        width: 400px;
+    }
+}
+
+@media screen and (min-width: 1680px) {
+    .communityCardsContainer{
+        gap: 15px;
+    }
+    .postCards{
+        width: 490px;
+        gap: 20px;
+    }
+    .postUserId{
+        font-size: 30px;
+    }
+    .postTitle{
+        font-size: 20px;
+    }
+    .postBody{
+        font-size: 18px;
+    }
+}

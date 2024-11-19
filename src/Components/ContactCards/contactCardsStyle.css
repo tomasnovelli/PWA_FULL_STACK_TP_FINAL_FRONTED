@@ -1,0 +1,95 @@
+.contactsCardsContainer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 5px 0px 5px;
+}
+.containerImg {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 0px 25px 0px 25px;
+    
+}
+.contactCard{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 5px;
+    color: var(--fontColor);
+}
+.topContactCardInfo{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 19px;
+    font-weight: 500;
+}
+.lastConection{
+    font-size: 13px;
+    font-weight: 300;
+}
+.bottomContactCardInfo{
+    width: 100%;
+    font-size: 13px;
+    font-weight: 300;
+}
+.lastMessage{
+    display: flex;
+    width: 65vw;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+@media screen and (min-width: 1200px) {
+    .contactsCardsContainer{
+        margin: 5px 30px 13px 30px;
+        gap: 7px;
+    }
+    .containerImg {
+        width: 60px;
+        height: 60px;
+        
+    }
+    .topContactCardInfo{
+        font-size: 23px;
+    }
+    .contactCard{
+        gap: 3px;
+    }
+    .lastConection{
+        font-size: 15px;
+    }
+    .bottomContactCardInfo{
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1680px) {
+    .contactsCardsContainer{
+        margin: 5px 100px 13px 100px;
+        gap: 10px;
+    }
+    .containerImg {
+        width: 85px;
+        height: 85px;
+        
+    }
+    .topContactCardInfo{
+        font-size: 35px;
+    }
+    .contactCard{
+        gap: 8px;
+    }
+    .lastConection{
+        font-size: 22px;
+    }
+    .bottomContactCardInfo{
+        font-size: 20px;
+    }
+}

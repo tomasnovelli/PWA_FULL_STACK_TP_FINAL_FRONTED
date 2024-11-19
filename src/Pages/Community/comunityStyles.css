@@ -1,0 +1,30 @@
+.communityTitle{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.communityPost{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    overflow-y: scroll;
+    gap: 20px;
+    padding: 10px;
+
+}
+
+.communityPost::-webkit-scrollbar{
+    width: 4px;
+}
+  .communityPost::-webkit-scrollbar-thumb {
+    background-color: var(--app-color);    /* color of the scroll thumb */
+    border-radius: 20px;       
+  }
+
+@media screen and (min-width: 1680px) {
+  .communityTitle{
+    font-size: 30px;
+  }
+}
+

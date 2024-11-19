@@ -1,0 +1,140 @@
+.writtingText {
+    width: 100%;
+    background-color: transparent;
+    padding: 2px 5px 5px 5px;
+}
+.form {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0px 5px 0px 5px;
+}
+.textArea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    background-color: var(--textArea-color);
+    width: 100%;
+    border-radius: 20px;
+    padding-left: 2px;
+    padding: 0px 10px 0px 10px;
+}
+.textArea .textAreaChild:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    flex: 7;
+}
+.textArea .textAreaChild:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+}
+.textInput {
+    width: 100%;
+    color: rgb(65, 65, 65);
+    font-weight: 500;
+    /* text-shadow: 0px 0px 0.5px rgb(0, 0, 0); */
+    background-color: transparent;
+    border: none;
+    height: 40px;
+    padding-left: 2px;
+}
+.textInput::placeholder {
+    color: rgb(58, 58, 58);
+}
+.textInput:focus {
+    outline: none;
+}
+.btn-submit {
+    background-color: var(--app-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    margin-left: 3px;
+    font-size: 17px;
+}
+.disabled {
+    background-color: grey;
+}
+.smileFace, .bi-paperclip, .bi-camera {
+    color: rgb(58, 58, 58);
+    font-size: 18px;
+    padding: 2px;
+}
+
+@media screen and (min-width: 768px) {
+    .form {
+        justify-content: center;
+        width: 93%;
+        margin: 0px 5px 0px 30px;
+    }
+    .textArea .textAreaChild:nth-child(2) {
+        position: relative;
+        left: 20px;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .form {
+        width: 90%;
+        margin: 0px 5px 0px 55px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .form {
+        gap: 15px;
+        margin: 0px 5px 0px 80px;
+    }
+    .textInput {
+        font-size: 20px;
+        height: 50px;
+    }
+    .textInput::placeholder {
+        font-size: 16px;
+    }
+    .btn-submit {
+        width: 50px;
+        height: 50px;
+        padding: 2px 2px 0px 0px;
+        font-size: 23px;
+    }  
+    .smileFace, .bi-paperclip, .bi-camera {
+        font-size: 24px;
+        padding: 2px;
+    }
+}
+
+@media screen and (min-width: 1680px) {
+    .form {
+        margin: 0px 5px 0px 80px;
+    }
+    .textArea {
+        border-radius: 30px;
+    }
+    .textInput {
+        font-size: 25px;
+        height: 70px;
+        padding-left: 10px;
+    }
+    .textInput::placeholder {
+        font-size: 20px;
+    }
+    .btn-submit {
+        width: 70px;
+        height: 70px;
+        padding: 2px 2px 0px 0px;
+        font-size: 33px;
+    }  
+    .smileFace, .bi-paperclip, .bi-camera {
+        font-size: 33px;
+        padding: 2px;
+    }
+}

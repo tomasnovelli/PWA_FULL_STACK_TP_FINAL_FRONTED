@@ -1,0 +1,89 @@
+.chatContainerYo{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+.chatContainerOther{
+    display: flex;
+    width: 100%;
+}
+.checkSeen{
+    color: rgb(0, 195, 255);
+}
+.otherMessage, .yoMessage{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    border: solid 1px rgba(0, 0, 0, 0.096);
+    border-radius: 10px;
+    margin: 0px 10px 10px 10px;
+    padding: 3px 10px 0px 10px;
+    
+}
+.yoMessage{
+    background-color: var(--chat-color);
+}
+.otherMessage{
+    background-color: var(--textArea-color);
+}
+.messageContent{
+    font-size: 14px;
+    padding: 7px 0px 3px 10px;
+
+}
+.footerMessage{
+    display: flex;
+    justify-content: end;
+    gap: 2px;
+}
+.date{
+    font-size: 13px;
+}
+
+@media screen and (min-width: 768px) {
+    .otherMessage, .yoMessage{
+        max-width: 400px;
+        margin: 0px 30px 10px 30px;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .otherMessage, .yoMessage{
+        max-width: 450px;
+        margin: 0px 50px 10px 50px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .otherMessage, .yoMessage{
+        max-width: 450px;
+        margin: 0px 190px 10px 190px;
+    }
+    .messageContent{
+        font-size: 18px;
+        padding: 7px 0px 10px 10px;
+    }
+    .date{
+        font-size: 15px;
+    }
+    .checkSeen, .checkDelivered{
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 1680px) {
+    .otherMessage, .yoMessage{
+        max-width: 500px;
+        margin: 0px 300px 10px 300px;
+    }
+    .messageContent{
+        font-size: 25px;
+        padding: 7px 0px 10px 10px;
+    }
+    .date{
+        font-size: 20px;
+    }
+    .checkSeen, .checkDelivered{
+        font-size: 25px;
+    }
+}

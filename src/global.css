@@ -1,0 +1,17 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: montserrat, sans-serif;
+    text-decoration: none;
+}
+:root{
+    --app-color: rgb(14, 192, 73);
+    --chat-color:#D9FDD3;
+    --textArea-color: rgb(238, 237, 237);
+    --fontColor: rgb(8, 8, 8);
+}
+
