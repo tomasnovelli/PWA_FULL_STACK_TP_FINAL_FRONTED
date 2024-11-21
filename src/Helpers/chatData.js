@@ -5,7 +5,7 @@ export const saveContactDatabase = (contactDataBase) => {
     localStorage.setItem('contactDatabase', contactDataBaseJSON)
 }
 export const getContactDatabase = () =>{
-     localStorage.clear('contactDatabase') 
+    /*  localStorage.clear('contactDatabase')  */
     const contactDataBase = localStorage.getItem('contactDatabase')
     if(contactDataBase){
         return JSON.parse(contactDataBase)

@@ -1,24 +1,25 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import extractFormData from '../../../utils/extracFormData'
 import { getUnnautenticatedHeaders, POST } from '../../../Helpers/http.fetching'
+import useForm from '../../../Hooks/useForm'
+import ENVIROMENT from '../../../Enviroment/enviroment'
 
 const Login = () => {
 
     const navigate = useNavigate()
     const [error, setErrors] = useState('')
+        
+    const formShcema = {
+        'email': '',
+        'password': ''
+    }
+    const { form_values_state, handleChangeInputValue } = useForm(formShcema)
     const handleSubmitLoginForm = async (e) => {
         try {
             e.preventDefault()
-            const valoresFormulario = new FormData(e.target)
-            const formShcema = {
-                'email': '',
-                'password': ''
-            }
-            const form_values_object = extractFormData(formShcema, valoresFormulario)
-            const response = await POST('http://localhost:3000/api/auth/login', {
+            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/login`, {
                 headers: getUnnautenticatedHeaders(),
-                body: JSON.stringify(form_values_object)
+                body: JSON.stringify(form_values_state)
             })
             if (!response.ok) {
                 return setErrors(response.message)
@@ -40,11 +41,11 @@ const Login = () => {
             <form onSubmit={handleSubmitLoginForm}>
                 <div>
                     <label htmlFor='email'>Ingresa tu email:</label>
-                    <input name='email' id='email' placeholder='pepe@gmail.com' />
+                    <input name='email' id='email' placeholder='pepe@gmail.com' onChange={handleChangeInputValue} />
                 </div>
                 <div>
                     <label htmlFor='password'>Ingresa tu contraseña</label>
-                    <input name='password' id='password' placeholder='pepe123' />
+                    <input name='password' id='password' placeholder='pepe123'onChange={handleChangeInputValue} />
                 </div>
                 {
                     error && 
