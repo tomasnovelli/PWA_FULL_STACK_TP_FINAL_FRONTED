@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { AddContact, Chat, Contacts, Login, NotFound404, Register, UserCall, UserInfo } from './Pages/index.js'
+import { AddContact, Chat, Contacts, ForgotPassword, Login, NotFound404, Register, ResetPassword, UserCall, UserInfo } from './Pages/index.js'
 
 function App() {
 
@@ -10,6 +10,8 @@ function App() {
       <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path='/forgot-password' element={<ForgotPassword />}/>
+        <Route path='/reset-password/:reset_token' element={<ResetPassword />} />
 
         <Route path='/contacts' element={<Contacts />} />
         <Route path='/contacts/chat/:contact_id' element={<Chat />}/>

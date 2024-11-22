@@ -37,14 +37,14 @@ const Login = () => {
     }
     return (
         <div>
-            <h1>Inicia Sesion</h1>
+            <h1>Login</h1>
             <form onSubmit={handleSubmitLoginForm}>
                 <div>
-                    <label htmlFor='email'>Ingresa tu email:</label>
+                    <label htmlFor='email'>Email:</label>
                     <input name='email' id='email' placeholder='pepe@gmail.com' onChange={handleChangeInputValue} />
                 </div>
                 <div>
-                    <label htmlFor='password'>Ingresa tu contraseña</label>
+                    <label htmlFor='password'>Password:</label>
                     <input name='password' id='password' placeholder='pepe123'onChange={handleChangeInputValue} />
                 </div>
                 {
@@ -54,11 +54,11 @@ const Login = () => {
                         <span>{error}</span>
                         </div>
                 }
-                <button type='submit'>Iniciar Sesion</button>
+                <button type='submit'>Login</button>
             </form>
-            <span>Si aun no tienes cuenta puedes <Link to={"/register"}>registrare</Link></span>
+            <span>If you don't have an account yet, you can<Link to={"/register"}>Register here</Link></span>
             <br />
-            <span>Olvidaste tu contraseña?  <Link to={'/forgot-password'}>Restablecer Contraseña</Link></span>
+            <span>Forgot your password?  <Link to={'/forgot-password'}>Reset password here</Link></span>
         </div>
     )
 }

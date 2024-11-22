@@ -1,6 +1,8 @@
 import AddContact from "./AddContact/AddContact";
+import ForgotPassword from "./AuthScreens/ForgotPassword/ForgotPassword";
 import Login from "./AuthScreens/Login/Login";
 import Register from "./AuthScreens/Register/Register";
+import ResetPassword from "./AuthScreens/ResetPassword/ResetPassword";
 import Chat from "./Chat/Chat";
 import Contacts from "./Contacts/Contacts";
 import NotFound404 from "./NotFound404/NotFound404";
@@ -16,5 +18,7 @@ export{
     UserInfo,
     NotFound404,
     Login,
-    Register
+    Register,
+    ForgotPassword,
+    ResetPassword
 }
