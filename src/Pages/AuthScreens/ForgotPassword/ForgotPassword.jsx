@@ -12,7 +12,6 @@ const ForgotPassword = () => {
     const handleSubmitForgotPasswordForm = async (e) => {
         try {
             e.preventDefault()
-            console.log(e.target)
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/forgot-password`, {
                 headers: getUnnautenticatedHeaders(),
                 body: JSON.stringify(form_values_state)

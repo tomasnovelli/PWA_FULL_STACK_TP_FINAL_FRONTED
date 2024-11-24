@@ -1,16 +1,21 @@
 import React from 'react'
 import './contacts.css'
 import { useGlobalContext } from '../../Components/GlobalContext/GlobalContext'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { ContactList, ContactListFooter, Header } from '../../Components/index.js'
 import Community from '../Community/Community.jsx'
+import ENVIROMENT from '../../Enviroment/enviroment.js'
+import { GET, getAuthenticatedHeaders } from '../../Helpers/http.fetching.js'
+import useUserContacts from '../../Hooks/useUserContacts.jsx'
 
 const Contacts = () => {
-    const { 
-        contactListData, 
-        handleChangeContent, 
-        searchContact, 
-        navigationState } = useGlobalContext()
+    const { user_id } = useParams()
+    const {
+        handleChangeContent,
+        searchContact,
+        navigationState 
+    } = useGlobalContext()
+    const { contactList, isLoadingContacts } = useUserContacts(user_id)
 
     return (
         <>
@@ -28,14 +33,15 @@ const Contacts = () => {
                         </button>
                     </Link>
                     {
-                        contactListData.length === 0 &&
-                        <div className='noContacts'>
-                            <span>You don't have any contacts yet..</span>
-                            <i className="bi bi-emoji-frown"></i>
-                        </div>
+                        isLoadingContacts ? 
+                        <span>Loading Contacts...</span>
+                        :(
+                            contactList.length === 0 
+                            ?<span>You don't have any contacts yet..</span>
+                            :<ContactList dataMock={contactList} />
+                        )
                     }
-                    <ContactList dataMock={contactListData} />
-                    <ContactListFooter activeSite={navigationState}/>
+                    <ContactListFooter activeSite={navigationState} />
                 </div>
             }
             {
@@ -43,7 +49,7 @@ const Contacts = () => {
                 <div className='contacts'>
                     <Header />
                     <Community />
-                    <ContactListFooter activeSite={navigationState}/>
+                    <ContactListFooter activeSite={navigationState} />
                 </div>
             }
         </>

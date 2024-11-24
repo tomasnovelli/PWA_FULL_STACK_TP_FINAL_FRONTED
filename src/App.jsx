@@ -13,11 +13,12 @@ function App() {
         <Route path='/forgot-password' element={<ForgotPassword />}/>
         <Route path='/reset-password/:reset_token' element={<ResetPassword />} />
 
-        <Route path='/contacts' element={<Contacts />} />
+        <Route path='/contacts/:user_id' element={<Contacts />} />
         <Route path='/contacts/chat/:contact_id' element={<Chat />}/>
         <Route path='/contacts/chat/:contact_id/info' element={<UserInfo />}/>
         <Route path='/contacts/chat/:contact_id/calling' element={<UserCall />}/>
         <Route path='/contacts/addContact' element={<AddContact />}/>
+
         <Route path='/*' element={<NotFound404/>}/>
       </Routes>
     </>

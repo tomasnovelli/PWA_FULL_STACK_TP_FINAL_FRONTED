@@ -22,13 +22,14 @@ const Login = () => {
                 body: JSON.stringify(form_values_state)
             })
             if (!response.ok) {
-                return setErrors(response.message)
+                console.log({response})
+                return setErrors(response.payload.detail)
             }
-            console.log({ response })
+            console.log({response})
             const access_token = response.payload.token
             sessionStorage.setItem('access_token', access_token)
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user)) 
-            navigate('/contacts')
+            navigate(`/contacts/${response.payload.user.id}`)
         }
         catch (error) {
             error.message

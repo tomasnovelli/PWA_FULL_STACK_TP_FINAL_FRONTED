@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import useForm from '../../../Hooks/useForm'
-import { getUnnautenticatedHeaders, POST } from '../../../Helpers/http.fetching'
+import { getUnnautenticatedHeaders, PUT } from '../../../Helpers/http.fetching'
 import ENVIROMENT from '../../../Enviroment/enviroment'
 
 const ResetPassword = () => {
     const {reset_token} = useParams()
     console.log(reset_token)
     const [errors, setErrors] = useState('')
+    const [responseFetch, setResponseFetch] = useState('')
 
     const formSchema = {
         'password': '',
@@ -22,11 +23,16 @@ const ResetPassword = () => {
                 return setErrors('Passwords do not match')
             } else{
                 setErrors('')
-            }
-            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/${reset_token}`, {
+            } 
+            const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/${reset_token}`, {
                 headers: getUnnautenticatedHeaders(),
-                body: JSON.stringify(form_values_state.password)
+                body: JSON.stringify(form_values_state)
             })
+            if(!response.ok) {
+                return setErrors(response.payload.detail)
+            } else{
+                setResponseFetch(response)
+            }
             console.log({response})
         }
         catch (error) {
@@ -49,6 +55,9 @@ const ResetPassword = () => {
                     errors && <span>{errors}</span>
                 }
                 <p>Password must be at least 8 characters and must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number</p>
+                {
+                    responseFetch.ok && <span>{responseFetch.payload.detail} go to <Link to='/login'>Login</Link></span>
+                }
                 <button type='submit'>Reset Password</button>
             </form>
         </div>

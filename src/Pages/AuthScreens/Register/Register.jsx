@@ -9,8 +9,9 @@ import ENVIROMENT from '../../../Enviroment/enviroment'
 const Register = () => {
 
     const navigate = useNavigate()
-    const [profilePicture, setprofilePicture] = useState('')
-
+    const [profilePicture, setProfilePicture] = useState('')
+    const [errors, setErrors] = useState('') 
+    
     const formShcema = {
         'userName': '',
         'email': '',
@@ -25,26 +26,29 @@ const Register = () => {
             body: JSON.stringify(form_values_state)
         })
         console.log({response})
-        navigate('/login')
+        if(!response.ok) {
+            return setErrors(response.payload.detail)
+        }
+        if(!errors){
+            navigate('/login')
+        }
+        
     }
     const handleChangeFile = (e) => {
         const file_found = e.target.files[0]
         const FILE_MB_LIMIT = 2
-        if (file_found && file_found.size > FILE_MB_LIMIT * 1024 * 1024) {
-            //crear estado de errores
-            alert(`Error el archivo es muy grande (limite ${FILE_MB_LIMIT}mb)`)
-            return
-        }
         const lector_archivos = new FileReader()
-        lector_archivos.onloadend = () => {
-            console.log('carga finalizada')
-            setprofilePicture(lector_archivos.result)
-        }
-        if (file_found) {
-            lector_archivos.readAsDataURL(file_found)
-        }
-        if (!file_found) {
-            setprofilePicture('/images/newUserWhatsapp.jpg')
+        if (file_found && file_found.size > FILE_MB_LIMIT * 1024 * 1024) {
+            setErrors('File must be less than 2 MB')
+        }else{
+            lector_archivos.onloadend = () => {
+                console.log('carga finalizada')
+                setProfilePicture(lector_archivos.result)
+            }
+            if (file_found) {
+                lector_archivos.readAsDataURL(file_found)
+            }
+            setErrors('')
         }
     }
 
@@ -67,11 +71,14 @@ const Register = () => {
                 </div>
                 <div>
                     {
-                        profilePicture && <img src={profilePicture} />
+                        profilePicture && <img src={profilePicture} width={200}/>
                     }
                     <label htmlFor='profilePicture'>Select Your Profile Picture</label>
                     <input name='profilePicture' id='profilePicture' type='file' onChange={handleChangeFile} accept='image/*' />
-
+                    {
+                        errors && <span>{errors}</span>
+                        
+                    }
                 </div>
                 <button type='submit'>Registrar</button>
             </form>
