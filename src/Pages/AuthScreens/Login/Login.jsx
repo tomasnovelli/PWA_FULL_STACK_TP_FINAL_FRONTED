@@ -17,6 +17,7 @@ const Login = () => {
     const handleSubmitLoginForm = async (e) => {
         try {
             e.preventDefault()
+            console.log(ENVIROMENT.URL_BACKEND)
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/login`, {
                 headers: getUnnautenticatedHeaders(),
                 body: JSON.stringify(form_values_state)

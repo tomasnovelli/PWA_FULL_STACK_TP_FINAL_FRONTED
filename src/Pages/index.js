@@ -1,4 +1,5 @@
 import AddContact from "./AddContact/AddContact";
+import EmailVerify from "./AuthScreens/EmailVerify/EmailVerified";
 import ForgotPassword from "./AuthScreens/ForgotPassword/ForgotPassword";
 import Login from "./AuthScreens/Login/Login";
 import Register from "./AuthScreens/Register/Register";
@@ -20,5 +21,6 @@ export{
     Login,
     Register,
     ForgotPassword,
-    ResetPassword
+    ResetPassword,
+    EmailVerify
 }
