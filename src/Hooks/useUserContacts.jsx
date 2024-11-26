@@ -11,10 +11,10 @@ const useUserContacts = (user_id) => {
             headers: getAuthenticatedHeaders()
         })
         console.log({response})
-/*         if (response.ok && response.payload.contacts.length === 0) {
+        if (response.ok){
             setContactList(response.payload.contacts)
             setIsLoadingContacts(false)
-        } */
+        }
     }
     useEffect(
         () => {

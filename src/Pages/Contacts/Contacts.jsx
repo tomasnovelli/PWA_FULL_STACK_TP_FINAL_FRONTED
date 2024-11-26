@@ -17,6 +17,7 @@ const Contacts = () => {
         navigationState 
     } = useGlobalContext()
     const { contactList, isLoadingContacts } = useUserContacts(user_id)
+    
     return (
         <>
             {

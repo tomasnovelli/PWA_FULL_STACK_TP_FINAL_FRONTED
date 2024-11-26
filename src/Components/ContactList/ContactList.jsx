@@ -8,7 +8,7 @@ const ContactList = ({dataMock}) => {
             {
                 dataMock.map((contacts) => {
                     return (
-                        <ContactCards contactData={contacts} key={contacts.id} />   
+                        <ContactCards contactData={contacts} key={contacts.contactId} />   
                     )
                 })
             }

@@ -7,26 +7,26 @@ const ContactCards = ({ contactData }) => {
 
     const { handleCleanSearchInput } = useGlobalContext()
     const {
-        name,
-        thumbnail,
-        lastConection,
-        id,
-        message
+        contactId,
+        nickName,
+        userName,
+        email,
+        profilePicture
     } = contactData
-    const lastMessage = contactLastMessage(message)
+    /* const lastMessage = contactLastMessage(message) */
 
     return (
         <div className='contactsCardsContainer'>
             <div className='containerImg'>
-                <img src={thumbnail} alt={'img_' + name.toLowerCase()} />
+                <img src={profilePicture} alt={'img_' + userName.toLowerCase()} />
             </div>
-            <Link className='contactCard' to={'/contacts/chat/' + id} onClick={handleCleanSearchInput}>
+            <Link className='contactCard' to={'/contacts/chat/' + contactId} onClick={handleCleanSearchInput}>
                 <div className='topContactCardInfo'>
-                    <span>{name}</span>
-                    <span className='lastConection'>{lastConection}</span>
+                    <span>{nickName}</span>
+                    <span className='lastConection'>10:43</span>
                 </div>
                 <div className='bottomContactCardInfo'>
-                    <span className='lastMessage'>{lastMessage}</span>
+                    <span className='lastMessage'>LastMessage</span>
                 </div>
             </Link>
         </div>
