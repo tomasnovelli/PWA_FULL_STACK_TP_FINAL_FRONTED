@@ -11,6 +11,8 @@ import ContactListFooter from "./ContactListFooter/ContactListFooter";
 import ChatDropdownMenu from "./ChatDropdownMenu/ChatDropdownMenu";
 import FetchingPostList from "./FetchingPostList/FetchingPostList";
 import FetchingCommunity from "./FetchingCommunity/FetchingCommunity";
+import ContactsDropdownMenu from "./ContactsDropdownMenu/ContactsDropdownMenu";
+
 
 export{
     ContactCards,
@@ -26,6 +28,7 @@ export{
     ChatDropdownMenu,
     FetchingCommunity,
     FetchingPostList,
+    ContactsDropdownMenu
 }
 
 

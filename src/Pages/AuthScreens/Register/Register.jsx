@@ -3,13 +3,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import useForm from '../../../Hooks/useForm'
 import { getUnnautenticatedHeaders, POST } from '../../../Helpers/http.fetching'
 import ENVIROMENT from '../../../Enviroment/enviroment'
+import useImageUpload from '../../../Hooks/useImageUpload'
 
 
 
 const Register = () => {
 
     const navigate = useNavigate()
-    const [profilePicture, setProfilePicture] = useState('')
     const [errors, setErrors] = useState('') 
     
     const formShcema = {
@@ -18,6 +18,8 @@ const Register = () => {
         'password': ''
     }
     const { form_values_state, handleChangeInputValue } = useForm(formShcema)
+    const { handleChangeFile, imageErrors, profilePicture } = useImageUpload()
+
     form_values_state.profilePicture = profilePicture
     const handleSubmitRegisterForm = async (e) => {
         e.preventDefault()
@@ -32,24 +34,9 @@ const Register = () => {
         if(!errors){
             navigate('/login')
         }
-        
     }
-    const handleChangeFile = (e) => {
-        const file_found = e.target.files[0]
-        const FILE_MB_LIMIT = 2
-        const lector_archivos = new FileReader()
-        if (file_found && file_found.size > FILE_MB_LIMIT * 1024 * 1024) {
-            setErrors('File must be less than 2 MB')
-        }else{
-            lector_archivos.onloadend = () => {
-                console.log('carga finalizada')
-                setProfilePicture(lector_archivos.result)
-            }
-            if (file_found) {
-                lector_archivos.readAsDataURL(file_found)
-            }
-            setErrors('')
-        }
+    if(imageErrors){
+        setErrors(imageErrors)
     }
 
     return (
@@ -59,7 +46,6 @@ const Register = () => {
                 <div>
                     <label htmlFor='userName'>Enter Your UserName:</label>
                     <input name='userName' id='userName' placeholder='pepe' onChange={handleChangeInputValue} />
-
                 </div>
                 <div>
                     <label htmlFor='email'>Enter Your Email:</label>
@@ -77,7 +63,6 @@ const Register = () => {
                     <input name='profilePicture' id='profilePicture' type='file' onChange={handleChangeFile} accept='image/*' />
                     {
                         errors && <span>{errors}</span>
-                        
                     }
                 </div>
                 <button type='submit'>Registrar</button>

@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const useForm = (form_schema) =>{
+const useForm = (form_schema) => {
     const [form_values_state, setFormValuesState] = useState(form_schema)
    
 

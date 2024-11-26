@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { AddContact, Chat, Contacts, EmailVerify, ForgotPassword, Login, NotFound404, Register, ResetPassword, UserCall, UserInfo } from './Pages/index.js'
+import { AddContact, Chat, Contacts, EmailVerify, ForgotPassword, Login, NotFound404, Register, ResetPassword, UpdateUserProfile, UserCall, UserInfo } from './Pages/index.js'
 
 function App() {
 
@@ -19,6 +19,7 @@ function App() {
         <Route path='/contacts/chat/:contact_id/info' element={<UserInfo />}/>
         <Route path='/contacts/chat/:contact_id/calling' element={<UserCall />}/>
         <Route path='/contacts/:user_id/addContact' element={<AddContact />}/>
+        <Route path='/update-profile/:user_id' element={<UpdateUserProfile />} />
 
         <Route path='/*' element={<NotFound404/>}/>
       </Routes>

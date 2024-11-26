@@ -77,7 +77,6 @@ const AddContactForm = () => {
     const handleCreateContactForm = async (e) => {
         try{
             e.preventDefault()
-            
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/user/contacts/${user_id}/add-new-contact`, {
                 headers: getAuthenticatedHeaders(),
                 body: JSON.stringify(form_values_state)
@@ -85,6 +84,8 @@ const AddContactForm = () => {
             if(!response.ok) {
                 console.log({response})
                 return setErrors(response.payload.detail)
+            }else{
+                navigate(`/contacts/${user_id}`)
             }
             console.log({response})
         }
