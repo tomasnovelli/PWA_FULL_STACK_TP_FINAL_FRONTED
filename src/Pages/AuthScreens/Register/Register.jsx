@@ -18,9 +18,9 @@ const Register = () => {
         'password': ''
     }
     const { form_values_state, handleChangeInputValue } = useForm(formShcema)
-    const { handleChangeFile, imageErrors, profilePicture } = useImageUpload()
+    const { handleChangeFile, imageErrors, newProfilePicture } = useImageUpload()
 
-    form_values_state.profilePicture = profilePicture
+    form_values_state.profilePicture = newProfilePicture
     const handleSubmitRegisterForm = async (e) => {
         e.preventDefault()
         const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/registration`, {
@@ -34,9 +34,6 @@ const Register = () => {
         if(!errors){
             navigate('/login')
         }
-    }
-    if(imageErrors){
-        setErrors(imageErrors)
     }
 
     return (
@@ -57,10 +54,13 @@ const Register = () => {
                 </div>
                 <div>
                     {
-                        profilePicture && <img src={profilePicture} width={200}/>
+                        newProfilePicture && <img src={newProfilePicture} width={200}/>
                     }
                     <label htmlFor='profilePicture'>Select Your Profile Picture</label>
                     <input name='profilePicture' id='profilePicture' type='file' onChange={handleChangeFile} accept='image/*' />
+                    {
+                        imageErrors && <span>{imageErrors}</span>
+                    }
                     {
                         errors && <span>{errors}</span>
                     }

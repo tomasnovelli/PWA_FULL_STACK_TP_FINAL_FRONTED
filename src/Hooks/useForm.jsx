@@ -12,7 +12,8 @@ const useForm = (form_schema) => {
             (prev_form_values_state) => {
                 return {
                     ...prev_form_values_state, 
-                    [input_name]: input_value}
+                    [input_name]: input_value
+                }
             }
         )
     }

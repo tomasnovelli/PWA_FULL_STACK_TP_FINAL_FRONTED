@@ -8,49 +8,55 @@ import ENVIROMENT from '../../Enviroment/enviroment'
 const UpdateUserProfile = () => {
     const { user_id } = useParams()
     const [errors, setErrors] = useState('')
-    const navigate = useNavigate() 
+    const {userName, profilePicture} = JSON.parse(sessionStorage.getItem('user_info')) 
+    const navigate = useNavigate()
     const formSchema = {
-        'userName': '',
+        'userName': userName,
         'actualPassword': '',
         'password': '',
         'profilePicture': ''
     }
     const { form_values_state, handleChangeInputValue } = useForm(formSchema)
-    const { profilePicture, handleChangeFile, imageErrors } = useImageUpload()
-    if (imageErrors) {
-        setErrors(imageErrors)
-    } else {
-        form_values_state.profilePicture = profilePicture
-    }
+    const { newProfilePicture, handleChangeFile, imageErrors } = useImageUpload(profilePicture)
+    form_values_state.profilePicture = newProfilePicture
     const handleSubmitUpdateProfileForm = async (e) => {
-        e.preventDefault()
-        const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/user/update-profile/${user_id}`, {
-            headers: getAuthenticatedHeaders(),
-            body: JSON.stringify(form_values_state)
-        })
-        if (!response.ok) {
-            console.log({ response })
-        } else {
-            console.log({ response })
-            setErrors('')
-            navigate(`/contacts/${user_id}`)
+        try {
+            e.preventDefault()
+            const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/user/update-profile/${user_id}`, {
+                headers: getAuthenticatedHeaders(),
+                body: JSON.stringify(form_values_state)
+            })
+            if (!response.ok) {
+                console.log({ response })
+                setErrors(response.payload.detail)
+            } else {
+                sessionStorage.setItem('user_info', JSON.stringify(response.payload.detail))
+                setErrors('')
+                navigate(`/contacts/${user_id}`)
+            }
+        }
+        catch(error){
+            error.message
         }
     }
-
+    
     return (
         <div>
             <h2>Update Your Profile</h2>
             <form onSubmit={handleSubmitUpdateProfileForm}>
                 <div>
                     {
-                        profilePicture && <img src={profilePicture} width={200} />
+                        newProfilePicture && <img src={newProfilePicture} width={200} />
                     }
                     <label htmlFor='profilePicture'>Select Your Profile Picture</label>
                     <input name='profilePicture' id='profilePicture' type='file' onChange={handleChangeFile} accept='image/*' />
+                    {
+                        imageErrors && <span>{imageErrors}</span>
+                    }
                 </div>
                 <div>
                     <label htmlFor='userName'>Change Username:</label>
-                    <input name='userName' id='userName' placeholder='pepe' onChange={handleChangeInputValue} />
+                    <input name='userName' id='userName' placeholder='pepe' defaultValue={form_values_state.userName} onChange={handleChangeInputValue} />
                 </div>
 
                 <div>
