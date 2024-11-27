@@ -19,7 +19,7 @@ const Register = () => {
     }
     const { form_values_state, handleChangeInputValue } = useForm(formShcema)
     const { handleChangeFile, imageErrors, newProfilePicture } = useImageUpload()
-
+    console.log(form_values_state)
     form_values_state.profilePicture = newProfilePicture
     const handleSubmitRegisterForm = async (e) => {
         e.preventDefault()
