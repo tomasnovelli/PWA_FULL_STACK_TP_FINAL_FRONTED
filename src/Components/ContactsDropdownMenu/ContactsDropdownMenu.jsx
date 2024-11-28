@@ -17,16 +17,16 @@ const ContactsDropdownMenu = ({ user_id }) => {
                 dropdown &&
                 <div>
                     <div className='chatDropdownMenu'>
-                        <Link to={`/update-profile/${user_id}`}>
+                        <Link className='btn-cleanChat' to={`/update-profile/${user_id}`}>
                             <span>Update Your Profile</span>
                         </Link>
-                        <button onClick={() => setDeleteAccountState(!deleteAccountState)}>
+                        <Link className='btn-cleanChat' onClick={() => setDeleteAccountState(!deleteAccountState)}>
                             <span>Delete Account</span>
-                        </button>
+                        </Link>
                     </div>
                     {
                         deleteAccountState &&
-                        <div>
+                        <div className='chatDropdownMenu'>
                             <span>Are you sure you want to delete your account?</span>
                             <button onClick={() => setDeleteAccountState(!deleteAccountState)}>Cancel</button>
                             <button>Confirm</button>
