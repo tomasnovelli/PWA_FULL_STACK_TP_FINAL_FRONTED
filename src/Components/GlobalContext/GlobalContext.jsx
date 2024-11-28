@@ -6,22 +6,22 @@ const GlobalContext = createContext()
 
 export const GlobalContextProvider = ({ children }) => {
 
-    const [contactListData, setContactListData] = useState(getContactDatabase())
+    const [contactListData, setContactListData] = useState([])
     const [textInput, setTextInput] = useState('')
     const [searchContact, setSearchContact] = useState('')
     const [dropdown, setDropdown] = useState(false)
     const [navigationState, setNavigationState] = useState('contacts')
+    
+    /* const getContactDataById = (id) => getContactDatabase().find(contactos => contactos.id === id) */
+    /* const getContactIndex = (id, contactList) => contactList.findIndex(contact => contact.id === id) */
 
-    const getContactDataById = (id) => getContactDatabase().find(contactos => contactos.id === id)
-    const getContactIndex = (id, contactList) => contactList.findIndex(contact => contact.id === id)
-
-    const updateContact = (updatedContactData) => {
+/*     const updateContact = (updatedContactData) => {
         const updatedContactListData = getContactDatabase()
         const contactIndex = getContactIndex(updatedContactData.id, updatedContactListData)
         updatedContactListData[contactIndex] = updatedContactData
         setContactListData(prevContactListData => updatedContactListData)
         saveContactDatabase(updatedContactListData)
-    }
+    } */
     const handleChangeContentValue = (e) => {
         setTextInput(e.target.value)
     }
@@ -37,23 +37,24 @@ export const GlobalContextProvider = ({ children }) => {
         }
     }
     useEffect(() => {
-        const contactListToSearch = getContactDatabase()
-        const newContactList = contactListToSearch.filter(contact => contact.name.toLowerCase().includes(searchContact.toLowerCase()))
+        const contactListToSearch = contactListData
+        const newContactList = contactListToSearch.filter(contact => contact.nickName.toLowerCase().includes(searchContact.toLowerCase()))
         setContactListData(newContactList)
     }, [searchContact])
+
     const handleOpenCloseDropDownMenu = () => setDropdown(!dropdown)
-    const clearLocalStorage = () => {
+/*     const clearLocalStorage = () => {
         localStorage.clear('contactDatabase')
         setDropdown(!dropdown)
-    }
+    } */
 
     return (
         <div>
             <GlobalContext.Provider value={
                 {
-                    getContactDataById,
+                    /* getContactDataById,
                     getContactIndex,
-                    updateContact,
+                    updateContact, */
                     contactListData,
                     setContactListData,
                     handleChangeContentValue,
@@ -64,7 +65,7 @@ export const GlobalContextProvider = ({ children }) => {
                     dropdown,
                     setDropdown,
                     handleOpenCloseDropDownMenu,
-                    clearLocalStorage,
+                    /* clearLocalStorage, */
                     handleCleanSearchInput,
                     navigationState,
                     setNavigationState,

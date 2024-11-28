@@ -10,15 +10,18 @@ import useUserContacts from '../../Hooks/useUserContacts.jsx'
 
 const Contacts = () => {
     const { user_id } = useParams()
+
     const {
+        contactListData,
         handleChangeContent,
         searchContact,
         navigationState 
     } = useGlobalContext()
+    
     const { 
-        contactList, 
         isLoadingContacts 
     } = useUserContacts(user_id)
+
 
     return (
         <>
@@ -39,9 +42,9 @@ const Contacts = () => {
                         isLoadingContacts ? 
                         <span>Loading Contacts...</span>
                         :(
-                            contactList.length === 0 
+                            contactListData.length === 0 
                             ?<span>You don't have any contacts yet..</span>
-                            :<ContactList dataMock={contactList} />
+                            :<ContactList dataMock={contactListData} />
                         )
                     }
                     <ContactListFooter activeSite={navigationState} />

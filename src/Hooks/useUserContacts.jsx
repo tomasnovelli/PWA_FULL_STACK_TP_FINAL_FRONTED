@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
 import { GET, getAuthenticatedHeaders } from "../Helpers/http.fetching"
 import ENVIROMENT from "../Enviroment/enviroment"
+import { useGlobalContext } from "../Components/GlobalContext/GlobalContext"
 
 
 const useUserContacts = (user_id) => {
-    const [contactList, setContactList] = useState([])
+    /* const [contactList, setContactList] = useState([]) */
+    const {contactListData, setContactListData} = useGlobalContext()
+
     const [isLoadingContacts, setIsLoadingContacts] = useState(true)
     const getUserContacts = async () => {
         const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/user/contacts/${user_id}`, {
@@ -12,7 +15,7 @@ const useUserContacts = (user_id) => {
         })
         console.log({response})
         if (response.ok){
-            setContactList(response.payload.contacts)
+            setContactListData(response.payload.contacts)
             setIsLoadingContacts(false)
         }
     }
@@ -22,7 +25,7 @@ const useUserContacts = (user_id) => {
         },
         []
     )
-    return { contactList, isLoadingContacts }
+    return { isLoadingContacts}
 }
 
 export default useUserContacts
