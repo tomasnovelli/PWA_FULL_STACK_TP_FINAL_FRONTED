@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useGlobalContext } from '../GlobalContext/GlobalContext'
 import { Link } from 'react-router-dom'
+import { useAuthContext } from '../../Context/AuthContext'
 
 const ContactsDropdownMenu = ({ user_id }) => {
     const {
@@ -9,7 +10,13 @@ const ContactsDropdownMenu = ({ user_id }) => {
         handleOpenCloseDropDownMenu,
         handleCloseDropdown
     } = useGlobalContext()
+    const {logOut} = useAuthContext()
+
     const [deleteAccountState, setDeleteAccountState] = useState(false)
+    const handleDeleteYourAccount = (e) =>{
+        e.preventDefault()
+        
+    }
 
     return (
         <div>
@@ -20,16 +27,20 @@ const ContactsDropdownMenu = ({ user_id }) => {
                         <Link className='btn-cleanChat' to={`/update-profile/${user_id}`}>
                             <span>Update Your Profile</span>
                         </Link>
+                        <Link className='btn-cleanChat' onClick={logOut}>
+                            <span>Log Out</span>
+                        </Link>
                         <Link className='btn-cleanChat' onClick={() => setDeleteAccountState(!deleteAccountState)}>
                             <span>Delete Account</span>
                         </Link>
                     </div>
+                    
                     {
                         deleteAccountState &&
                         <div className='chatDropdownMenu'>
                             <span>Are you sure you want to delete your account?</span>
                             <button onClick={() => setDeleteAccountState(!deleteAccountState)}>Cancel</button>
-                            <button>Confirm</button>
+                            <button onClick={handleDeleteYourAccount}>Confirm</button>
                         </div>
                     }
                 </div>

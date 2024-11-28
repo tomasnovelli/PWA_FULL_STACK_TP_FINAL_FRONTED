@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
 import useImageUpload from '../../Hooks/useImageUpload'
 import { getAuthenticatedHeaders, PUT } from '../../Helpers/http.fetching'
@@ -41,8 +41,12 @@ const UpdateUserProfile = () => {
     }
     
     return (
-        <div>
+        <div> 
+            <div>
             <h2>Update Your Profile</h2>
+            <Link to={`/contacts/${user_id}`}><i className="backArrow bi bi-arrow-left-short"></i></Link>
+            </div>
+            
             <form onSubmit={handleSubmitUpdateProfileForm}>
                 <div>
                     {

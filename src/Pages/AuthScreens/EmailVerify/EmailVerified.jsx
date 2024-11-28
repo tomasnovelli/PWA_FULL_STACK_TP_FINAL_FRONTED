@@ -4,6 +4,7 @@ import { GET, getUnnautenticatedHeaders } from '../../../Helpers/http.fetching'
 import ENVIROMENT from '../../../Enviroment/enviroment'
 
 const EmailVerify = () => {
+
     const { verificationToken } = useParams()
     const [statusMessage, setStatusMessage] = useState('')
     const [isLoading, setIsLoading] = useState(true)

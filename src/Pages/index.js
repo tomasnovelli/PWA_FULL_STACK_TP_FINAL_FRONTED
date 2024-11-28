@@ -1,3 +1,4 @@
+import ProtectedRoute from "../Components/ProtectedRoute/ProtectedRoute";
 import AddContact from "./AddContact/AddContact";
 import EmailVerify from "./AuthScreens/EmailVerify/EmailVerified";
 import ForgotPassword from "./AuthScreens/ForgotPassword/ForgotPassword";
@@ -25,4 +26,5 @@ export{
     ResetPassword,
     EmailVerify,
     UpdateUserProfile
+
 }

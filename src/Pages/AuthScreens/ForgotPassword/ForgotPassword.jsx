@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { getUnnautenticatedHeaders, POST } from '../../../Helpers/http.fetching'
 
 const ForgotPassword = () => {
+
     const formSchema = {
         'email': ''
     }

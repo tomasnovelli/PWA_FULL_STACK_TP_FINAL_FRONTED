@@ -5,8 +5,8 @@ import { getUnnautenticatedHeaders, PUT } from '../../../Helpers/http.fetching'
 import ENVIROMENT from '../../../Enviroment/enviroment'
 
 const ResetPassword = () => {
+
     const {reset_token} = useParams()
-    console.log(reset_token)
     const [errors, setErrors] = useState('')
     const [responseFetch, setResponseFetch] = useState('')
 

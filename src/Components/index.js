@@ -12,6 +12,9 @@ import ChatDropdownMenu from "./ChatDropdownMenu/ChatDropdownMenu";
 import FetchingPostList from "./FetchingPostList/FetchingPostList";
 import FetchingCommunity from "./FetchingCommunity/FetchingCommunity";
 import ContactsDropdownMenu from "./ContactsDropdownMenu/ContactsDropdownMenu";
+import IsLogged from "./IsLogged/IsLogged";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
+
 
 
 export{
@@ -28,7 +31,10 @@ export{
     ChatDropdownMenu,
     FetchingCommunity,
     FetchingPostList,
-    ContactsDropdownMenu
+    ContactsDropdownMenu,
+    IsLogged,
+    ProtectedRoute
+
 }
 
 

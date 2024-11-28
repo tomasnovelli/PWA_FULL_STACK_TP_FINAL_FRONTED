@@ -1,5 +1,5 @@
 const ENVIROMENT = {
-    URL_BACKEND: 'https://pwa-full-stack-tp-final-backend.vercel.app',
+    URL_BACKEND: 'http://localhost:3000',
 }
 //'https://pwa-full-stack-tp-final-backend.vercel.app'
 //'http://localhost:3000'
