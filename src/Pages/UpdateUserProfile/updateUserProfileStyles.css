@@ -1,0 +1,99 @@
+.updateUserInfoContainer{
+    height: 100vh;
+    
+}
+
+.updateUserInfoHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 2px;
+    border-bottom: 1px solid var(--textArea-color);
+}
+.selectProfilePicture{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.newProfilePicture{
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.updateUserInfoTitle{
+    font-size: 25px;
+}
+.updateUserInfoForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.updateUserInfoFormContainer{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.updateUserInfoFormContainer label {
+    font-size: 18px;
+    font-weight: 500;
+}
+.updateUserInfoFormContainer input {
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.inputsBorder {
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+.inputsBorder:focus {
+    outline: none;
+}
+
+.updateUserInfoErrorContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.updateUserInfoErrorMessageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 171, 171, 0.836);
+    border: 1px solid rgba(255, 118, 118, 0.836);
+    border-radius: 8px;
+    padding: 2px;
+    font-size: 13px;
+    width: 95%;
+}
+
+.btn-UpdateUserProfileContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn-UpdateUserProfileSubmit{
+    width: 90%;
+    height: 30px;
+    color: white;
+    border: none;
+    background-color: var(--app-color);
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 15px;
+}
+

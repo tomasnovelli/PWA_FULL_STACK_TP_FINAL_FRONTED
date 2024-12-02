@@ -4,13 +4,15 @@ import useForm from '../../Hooks/useForm'
 import useImageUpload from '../../Hooks/useImageUpload'
 import { getAuthenticatedHeaders, PUT } from '../../Helpers/http.fetching'
 import ENVIROMENT from '../../Enviroment/enviroment'
-import { useGlobalContext } from '../../Components/GlobalContext/GlobalContext'
+import useGetUserProfileData from '../../Hooks/useGetUserProfileData'
+import './updateUserProfileStyles.css'
 
 const UpdateUserProfile = () => {
     const { user_id } = useParams()
     const [errors, setErrors] = useState('')
-    const {userName, profilePicture} = JSON.parse(sessionStorage.getItem('user_info'))
-    
+    /* const {currentUserProfileData} = useGetUserProfileData(user_id) */
+    const { userName, profilePicture } = JSON.parse(sessionStorage.getItem('user_info'))
+
     const navigate = useNavigate()
     const formSchema = {
         'userName': userName,
@@ -37,51 +39,70 @@ const UpdateUserProfile = () => {
                 navigate(`/contacts/${user_id}`)
             }
         }
-        catch(error){
+        catch (error) {
             error.message
         }
     }
-    
-    return (
-        <div> 
-            <div>
-            <h2>Update Your Profile</h2>
-            <Link to={`/contacts/${user_id}`}><i className="backArrow bi bi-arrow-left-short"></i></Link>
-            </div>
-            
-            <form onSubmit={handleSubmitUpdateProfileForm}>
-                <div>
-                    {
-                        newProfilePicture && <img src={newProfilePicture} width={200} />
-                    }
-                    <label htmlFor='profilePicture'>Select Your Profile Picture</label>
-                    <input name='profilePicture' id='profilePicture' type='file' onChange={handleChangeFile} accept='image/*' />
-                    {
-                        imageErrors && <span>{imageErrors}</span>
-                    }
-                </div>
-                <div>
-                    <label htmlFor='userName'>Change Username:</label>
-                    <input name='userName' id='userName' placeholder='pepe' defaultValue={form_values_state.userName} onChange={handleChangeInputValue} />
-                </div>
 
-                <div>
-                    <h3>Change Password</h3>
-                    <span>To change password please enter your actual password</span>
-                    <div>
-                        <label htmlFor='actualPassword'>Actual Password:</label>
-                        <input name='actualPassword' id='actualPassword' placeholder='pepe123' onChange={handleChangeInputValue} />
+    return (
+        <div className='updateUserInfoContainer'>
+            <div className='updateUserInfoHeader'>
+                <Link to={`/contacts/${user_id}`}><i className="backArrow bi bi-arrow-left-short"></i>
+                </Link>
+                <h2 className='updateUserInfoTitle'>Update Your Profile</h2>
+            </div>
+            <div className='updateUserInfoForm'>
+                <form className='updateUserInfoFormContainer' onSubmit={handleSubmitUpdateProfileForm}>
+                    <div className='selectProfilePicture'>
+                        {
+                            newProfilePicture &&
+                            <div className='newProfilePicture'>
+                                <img src={newProfilePicture} />
+                            </div>
+                        }
+                        <label htmlFor='profilePicture'>Select Your Profile Picture</label>
+                        <input name='profilePicture' id='profilePicture' type='file' onChange={handleChangeFile} accept='image/*' />
                     </div>
                     <div>
-                        <label htmlFor='password'>New Password:</label>
-                        <input name='password' id='password' placeholder='pepe123' onChange={handleChangeInputValue} />
+                        <label htmlFor='userName'>Change Username:</label>
+                        <input className='inputsBorder' name='userName' id='userName' placeholder='pepe' defaultValue={form_values_state.userName} onChange={handleChangeInputValue} />
                     </div>
-                </div>
-                {
-                    errors && <span>{errors}</span>
-                }
-                <button type='submit'>Update</button>
-            </form>
+
+                    <div>
+                        <h3>Change Password</h3>
+                        <span>To change password please enter your actual password</span>
+                        <div>
+                            <label htmlFor='actualPassword'>Actual Password:</label>
+                            <input className='inputsBorder' name='actualPassword' id='actualPassword' placeholder='pepe123' onChange={handleChangeInputValue} />
+                        </div>
+                        <div>
+                            <label htmlFor='password'>New Password:</label>
+                            <input className='inputsBorder' name='password' id='password' placeholder='pepe123' onChange={handleChangeInputValue} />
+                        </div>
+                    </div>
+                    <div className='updateUserInfoErrorContainer'>
+                        {
+                            errors &&
+                            <div className='updateUserInfoErrorMessageContainer'>
+                                <span>{errors}</span>
+                            </div>
+                        }
+                    </div>
+                    <div className='updateUserInfoErrorContainer'>
+                            {
+                                imageErrors &&
+                                <div className='updateUserInfoErrorMessageContainer'>
+                                    <span>{imageErrors}</span>
+                                </div>
+                            }
+                        </div>
+                    <div className='btn-UpdateUserProfileContainer'>
+                        <button className='btn-UpdateUserProfileSubmit' type='submit'>Update</button>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
     )
 }

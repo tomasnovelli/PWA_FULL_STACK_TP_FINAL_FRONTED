@@ -34,6 +34,13 @@
     bottom: 78px;
     right: 25px;
 }
+.noContactsTextPosition{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 400;
+}
 
 @media screen and (min-width: 1200px) {
     .contactSearchInput{

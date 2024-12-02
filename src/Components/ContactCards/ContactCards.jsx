@@ -14,7 +14,7 @@ const ContactCards = ({ contactData }) => {
         profilePicture
     } = contactData
     /* const lastMessage = contactLastMessage(message) */
-
+    
     return (
         <div className='contactsCardsContainer'>
             <div className='containerImg'>

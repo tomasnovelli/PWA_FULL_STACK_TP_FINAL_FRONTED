@@ -9,7 +9,7 @@ const AddContact = () => {
         <div className='addContactContainer'>
             <div className='addContactHeader'>
                 <Link to={`/contacts/${user_id}`}><i className="backArrow bi bi-arrow-left-short"></i></Link>
-                <span className='addContactTitle'>Add New Contact</span>
+                <h2 className='addContactTitle'>Add New Contact</h2>
             </div>
             <AddContactForm />
         </div>

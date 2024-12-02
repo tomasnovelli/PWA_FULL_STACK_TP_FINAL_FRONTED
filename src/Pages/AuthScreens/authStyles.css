@@ -1,0 +1,114 @@
+.authPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    gap: 7px;
+    background: linear-gradient(var(--app-color), var(--textArea-color));
+}
+.authTitle{
+    font-size: 33px;
+    font-weight: 600;
+    padding: 2px;
+}
+.whatsAppAuthPage{
+    margin-top: 7px;
+}
+.whatsAppAuthinIcon{
+    width: 200px;
+}
+
+.authForm{
+    background-color: var(--textArea-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid var(--textArea-color);
+    border-radius: 15px;
+    padding: 5px;
+    margin: 2px;
+    width: 95vw;
+    gap: 10px;
+}
+.authFormContainer{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.authFormContainer label {
+    font-size: 18px;
+    font-weight: 500;
+}
+.authFormContainer input {
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: transparent;
+}
+.authInputsBorder {
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+.authInputsBorder:focus {
+    outline: none;
+}
+.authErrorMessageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 171, 171, 0.836);
+    border: 1px solid rgba(255, 118, 118, 0.836);
+    border-radius: 8px;
+    padding: 2px;
+    font-size: 13px;
+    width: 95%;
+}
+.errorContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.authSuccededMessageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(141, 248, 150, 0.836);
+    border: 1px solid rgba(67, 253, 82, 0.836);
+    border-radius: 8px;
+    padding: 2px;
+    font-size: 13px;
+    width: 95%;
+}
+.btn-authContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn-authSubmit {
+    width: 80%;
+    height: 30px;
+    color: white;
+    border: none;
+    background-color: var(--app-color);
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 15px;
+}
+.authFooter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    font-size: 15px;
+    width: 85%;
+}
+
+.bold{
+    font-weight: 500;
+}

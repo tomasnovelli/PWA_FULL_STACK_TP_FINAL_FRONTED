@@ -11,14 +11,14 @@ const useGetUserProfileData = (user_id) => {
         })
         if (!response.ok) {
             console.log(response.message)
-            setUserErrors(response.payload.detail)
+            setUserErrors(response.payload.message)
         }
-        if (response.ok) {
-            console.log({ response })
+        else {
+            console.log(response.payload.user)
             setCurrentUserProfileData(response.payload.user)
         }
-        console.log({ response })
     }
+    
     useEffect(
         () => {
             getUserProfileData()
@@ -26,10 +26,12 @@ const useGetUserProfileData = (user_id) => {
         []
     )
 
-    return (
+    return {
         currentUserProfileData,
         userErrors
-    )
+    }
+        
+    
 }
 
 export default useGetUserProfileData
