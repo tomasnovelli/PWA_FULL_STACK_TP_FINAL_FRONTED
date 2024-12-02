@@ -14,7 +14,9 @@ const Contacts = () => {
         contactListData,
         handleChangeContent,
         searchContact,
-        navigationState 
+        navigationState,
+        handleCloseDropdown,
+        errors 
     } = useGlobalContext()
     
     const { 
@@ -24,6 +26,10 @@ const Contacts = () => {
     return (
         <>
             {
+                errors && 
+                <span>{errors}</span>
+            }
+            {
                 navigationState === 'contacts' &&
                 <div className='contacts'>
                     <Header user_id={user_id} />
@@ -31,7 +37,7 @@ const Contacts = () => {
                         <label htmlFor="contactSearch"></label>
                         <input className='contactSearchInput' type="text" placeholder='Search Contact' name='contactSearch' id='contactSearch' onChange={handleChangeContent} value={searchContact} autoComplete='off' />
                     </div>
-                    <Link to={`/contacts/${user_id}/addContact`}>
+                    <Link onClick={handleCloseDropdown} to={`/contacts/${user_id}/addContact`}>
                         <button className='btn-addContact'>
                             <i className="bi bi-person-plus-fill"></i>
                         </button>

@@ -65,19 +65,19 @@ const UpdateUserProfile = () => {
                     </div>
                     <div>
                         <label htmlFor='userName'>Change Username:</label>
-                        <input className='inputsBorder' name='userName' id='userName' placeholder='pepe' defaultValue={form_values_state.userName} onChange={handleChangeInputValue} />
+                        <input className='inputsBorder' name='userName' id='userName' placeholder='Pepe Juarez' defaultValue={form_values_state.userName} onChange={handleChangeInputValue} />
                     </div>
 
-                    <div>
-                        <h3>Change Password</h3>
+                    <div className='changePasswordContainer'>
+                        <h3 className='changePasswordText'>Change Password</h3>
                         <span>To change password please enter your actual password</span>
                         <div>
                             <label htmlFor='actualPassword'>Actual Password:</label>
-                            <input className='inputsBorder' name='actualPassword' id='actualPassword' placeholder='pepe123' onChange={handleChangeInputValue} />
+                            <input className='inputsBorder' name='actualPassword' id='actualPassword' placeholder='Pepe1234' onChange={handleChangeInputValue} />
                         </div>
                         <div>
                             <label htmlFor='password'>New Password:</label>
-                            <input className='inputsBorder' name='password' id='password' placeholder='pepe123' onChange={handleChangeInputValue} />
+                            <input className='inputsBorder' name='password' id='password' placeholder='Pepe1234' onChange={handleChangeInputValue} />
                         </div>
                     </div>
                     <div className='updateUserInfoErrorContainer'>

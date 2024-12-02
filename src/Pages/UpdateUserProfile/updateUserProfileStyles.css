@@ -79,7 +79,14 @@
     font-size: 13px;
     width: 95%;
 }
-
+.changePasswordContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.changePasswordText{
+    font-size: 21px;
+}
 .btn-UpdateUserProfileContainer{
     display: flex;
     flex-direction: column;

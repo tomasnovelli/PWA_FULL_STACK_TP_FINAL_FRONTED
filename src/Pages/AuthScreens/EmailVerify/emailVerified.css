@@ -1,0 +1,10 @@
+
+.statusMessage{
+    font-size: 22px;
+}
+.verifyEmailFooter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}

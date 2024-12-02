@@ -19,7 +19,6 @@ const Login = () => {
     const handleSubmitLoginForm = async (e) => {
         try {
             e.preventDefault()
-            console.log(ENVIROMENT.URL_BACKEND)
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/login`, {
                 headers: getUnnautenticatedHeaders(),
                 body: JSON.stringify(form_values_state)
@@ -46,11 +45,11 @@ const Login = () => {
             <div className='authForm'>
                 <h1 className='authTitle'>Login</h1>
                 <form className='authFormContainer' onSubmit={handleSubmitLoginForm}>
-                    <div className='emailField'>
+                    <div>
                         <label htmlFor='email'>Email:</label>
                         <input className='authInputsBorder' name='email' id='email' placeholder='pepe@gmail.com' onChange={handleChangeInputValue} />
                     </div>
-                    <div className='passwordField'>
+                    <div>
                         <label htmlFor='password'>Password:</label>
                         <input className='authInputsBorder' name='password' id='password' placeholder='Pepe1234' onChange={handleChangeInputValue} />
                     </div>
