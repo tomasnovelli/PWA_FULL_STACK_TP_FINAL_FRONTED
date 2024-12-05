@@ -20,7 +20,7 @@ function App() {
 
                 <Route element={<ProtectedRoute />}>
                     <Route path='/contacts/:user_id' element={<Contacts />} />
-                    <Route path='/contacts/chat/:contact_id' element={<Chat />} />
+                    <Route path='/contacts/:user_id/chat/:contact_id' element={<Chat />} />
                     <Route path='/contacts/chat/:contact_id/info' element={<UserInfo />} />
                     <Route path='/contacts/chat/:contact_id/calling' element={<UserCall />} />
                     <Route path='/contacts/:user_id/addContact' element={<AddContact />} />

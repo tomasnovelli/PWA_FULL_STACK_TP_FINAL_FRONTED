@@ -1,22 +1,19 @@
 import React from 'react'
 import './messageStyle.css'
 
-const Message = ({ author, text, date, state }) => {
+const Message = ({ senderId, receiverId, content, timestamp}) => {
 
     return (
         <>
             <div className='chatContainer'>
                 {
-                    author == 'Yo'
+                    senderId === user_id
                         ? <div className='chatContainerYo'>
                             <div className='yoMessage'>
-                                <p className='messageContent'>{text}</p>
+                                <p className='messageContent'>{content}</p>
                                 <div className='footerMessage'>
-                                    <span className='date'>{date}</span>
-                                    {state == 'visto'
-                                        ? <span className='checkSeen'><i className="bi bi-check-all"></i></span>
-                                        : <span className='checkDelivered'><i className="bi bi-check-all"></i></span>
-                                    }
+                                    <span className='date'>{timestamp}</span>
+                                    <span className='checkDelivered'><i className="bi bi-check-all"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -24,9 +21,9 @@ const Message = ({ author, text, date, state }) => {
                         :
                         <div className='chatContainerOther'>
                             <div className='otherMessage'>
-                                <p className='messageContent'>{text}</p>
+                                <p className='messageContent'>{content}</p>
                                 <div className='footerMessage'>
-                                    <span className='date'>{date}</span>
+                                    <span className='date'>{timestamp}</span>
                                 </div>
                             </div>
                         </div>

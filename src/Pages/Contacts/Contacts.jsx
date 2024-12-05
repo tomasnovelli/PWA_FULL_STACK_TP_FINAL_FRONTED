@@ -18,7 +18,6 @@ const Contacts = () => {
         handleCloseDropdown,
         errors 
     } = useGlobalContext()
-    console.log(contactListData)
     const { 
         isLoadingContacts 
     } = useUserContacts(user_id)

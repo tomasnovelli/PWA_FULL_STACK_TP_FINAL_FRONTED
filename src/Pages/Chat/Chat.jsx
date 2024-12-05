@@ -3,25 +3,24 @@ import './chat.css'
 import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../../Components/GlobalContext/GlobalContext'
 import { Header, ListChat, WrittingText } from '../../Components'
+import useGetContactChatData from '../../Hooks/useGetContactChatData'
 
 const Chat = () => {
 
   const { contactListData } = useGlobalContext()
-  
+  const { contact_id } = useParams()
   const {
-    nickName,
-    profilePicture,
-    contactId
-  } = contactListData
+    contactChatData,
+    contact_data_loading,
+    contact_data_error
+  } = useGetContactChatData(contact_id)
 
   return (
     <div className='chat'>
-      <Header nickName={contactListData.nickName}
-              profilePicture={contactListData.profilePicture} 
-              contactId={contactListData.contactId}
-      />
-{/*       <ListChat dataMessage={contactData.message} />
-      <WrittingText contactData={contactData} /> */}
+      <Header {...contactChatData} contactLoading={contact_data_loading} />
+      {/*       <ListChat dataMessage={contactData.message} />
+       */}
+       <WrittingText  />
     </div>
   )
 }
