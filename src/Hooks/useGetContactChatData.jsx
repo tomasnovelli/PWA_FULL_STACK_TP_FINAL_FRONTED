@@ -19,7 +19,6 @@ const useGetContactChatData = (contact_id) => {
             setcontactChatData(contactDataResponse.payload.contact)
         }
         else {
-            console.log({contactDataResponse})
             set_contact_data_error(contactDataResponse.message)
         }
     }

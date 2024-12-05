@@ -2,17 +2,19 @@ import React from 'react'
 import Message from '../Message/Message'
 import './listChat.css'
 
-const ListChat = ({dataMessage}) => {
+const ListChat = ({ conversation }) => {
+
+console.log(conversation)
     return (
         <div className='chatBox'>
             {
-                dataMessage.map((chat) => <Message 
-                    author={chat.author} 
-                    text={chat.text} 
-                    state={chat.state} 
-                    date={chat.date} 
-                    key={chat.id}
-                    />)
+                conversation.map((chat) => <Message
+                    author={chat.author}
+                    receiver={chat.receiver}
+                    content={chat.content}
+                    created_at={chat.created_at}
+                    key={chat._id}
+                />)
             }
         </div>
     )
