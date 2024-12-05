@@ -30,7 +30,10 @@ const Login = () => {
             const access_token = response.payload.token
             sessionStorage.setItem('access_token', access_token)
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user))
-            navigate(`/contacts/${response.payload.user.id}`)
+
+            window.location.reload()
+            
+            /* navigate(`/contacts/${response.payload.user.id}`) */
         }
         catch (error) {
             error.message

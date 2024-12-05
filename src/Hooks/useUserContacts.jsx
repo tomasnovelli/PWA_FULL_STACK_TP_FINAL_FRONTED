@@ -7,7 +7,7 @@ import { useGlobalContext } from "../Components/GlobalContext/GlobalContext"
 const useUserContacts = (user_id) => {
     /* const [contactList, setContactList] = useState([]) */
     const {contactListData, setContactListData} = useGlobalContext()
-
+    console.log(contactListData)
     const [isLoadingContacts, setIsLoadingContacts] = useState(true)
     const getUserContacts = async () => {
         const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/user/contacts/${user_id}`, {

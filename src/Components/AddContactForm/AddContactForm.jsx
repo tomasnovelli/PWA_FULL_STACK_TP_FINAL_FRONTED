@@ -10,47 +10,13 @@ import ENVIROMENT from '../../Enviroment/enviroment';
 const AddContactForm = () => {
     const {user_id} = useParams()
     const navigate = useNavigate()
-/*     const selectCountryNumberOptions = [
-        'AR +54',
-        'MX +52',
-        'CH +56',
-        'ES +34',
-        'US +1'
-    ] */
-/*     const formSchema = {
-        nickName: {
-            validate: (value) => {
-                return Boolean(value) && value.length > 2 && value.length < 20
-            },
-            errorText: 'The nickName must be between 2 to 19 alphanumeric characters'
-        },
-        phoneCountryId: {
-            validate: (value) => {
-                return Boolean(value)
-            },
-            errorText: 'You must select a country'
-        },
-        phoneNumber: {
-            validate: (value) => {
-                return Boolean(value) && !isNaN(value) && value.length === 10
-            },
-            errorText: 'The phone number must be 10 numerical characters'
-        },
-        email: {
-            validate: (value) => {
-                return Boolean(value) && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(value)
-            },
-            errorText: 'You must enter a valid email'
-        }
-    } */
+
     const formSchema = {
         'nickName': '',
-/*         'phoneCountryId': '',
-        'phoneNumber': '', */
         'email': ''
     }
     const {form_values_state, handleChangeInputValue} = useForm(formSchema)
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState('')
 /*     const addError = (error, origin) => {
         setErrors((prevState) => ({ ...prevState, [origin]: error }))
     }
@@ -103,30 +69,7 @@ const AddContactForm = () => {
                     </div>
                     <label htmlFor="nickName"></label>
                     <input className='inputsBorder' type="text" placeholder='nickName' name='nickName' id='nickName' onChange={handleChangeInputValue} autoComplete="off" />
-                    {errors.nickName && <span className='errorAlertName'>{errors.nickName}</span>}
                 </div>
-{/* 
-                <div className='newUserPhoneNumberContainer'>
-                    <div className='phoneNumberIconContainer formIconsSize'>
-                        <MdOutlinePhone />
-                    </div>
-                    <div className='countrySelectContainer'>
-                        <label className='countrySelectLabel' htmlFor="phoneCountryId">Country</label>
-                        <select className='phoneCountryId inputsBorder' name="phoneCountryId" id="phoneCountryId" onChange={handleChangeInputValue}>
-                            <option value={''} disabled>Select</option>
-                            {selectCountryNumberOptions.map((option, index) => {
-                                return <option
-                                    key={index + option}
-                                    value={option}>{option}</option>
-                            })
-                            }
-                        </select>
-                        {errors.phoneCountryId && <span className='errorAlertNCountry'>{errors.phoneCountryId}</span>}
-                    </div>
-                    <label htmlFor="phoneNumber"></label>
-                    <input className='phoneNumber inputsBorder' type="text" placeholder='Phone Number' name="phoneNumber" id="phoneNumber" onChange={handleChangeInputValue} autoComplete="off" />
-                    {errors.phoneNumber && <span className='errorAlertNumber'>{errors.phoneNumber}</span>}
-                </div> */}
 
                 <div className='newUserMailStorageContainer'>
                     <div className='mailStorageIcon formIconsSize'>
@@ -135,10 +78,13 @@ const AddContactForm = () => {
                     <div className='mailStorageInputContainer'>
                         <label htmlFor="email">Contact Email</label>
                         <input className='inputsBorder' type="text" placeholder='name@gmail.com' name='email' id='email' onChange={handleChangeInputValue} />
-                        {errors.email && <span className='errorAlertMail'>{errors.email}</span>}
                     </div>
                 </div>
             </div>
+            {   
+                errors && 
+                <span className='errorAlert'>{errors}</span>
+            }
             <div className='btn-addContactContainer'>
                 <button className='btn-addContactSubmit' type='submit'>Save</button>
             </div>

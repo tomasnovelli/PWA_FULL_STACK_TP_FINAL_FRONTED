@@ -37,9 +37,12 @@ export const GlobalContextProvider = ({ children }) => {
         }
     }
     useEffect(() => {
-        const contactListToSearch = contactListData
-        const newContactList = contactListToSearch.filter(contact => contact.nickName.toLowerCase().includes(searchContact.toLowerCase()))
-        setContactListData(newContactList)
+        /* const contactListToSearch = contactListData */
+        const newContactList = contactListData.filter(contact => contact.nickName.toLowerCase().includes(searchContact.toLowerCase()))
+        setContactListData(
+            (prevContactListData) => {return newContactList}
+
+        )
     }, [searchContact])
 
     const handleOpenCloseDropDownMenu = () => setDropdown(!dropdown)

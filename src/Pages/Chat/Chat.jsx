@@ -6,19 +6,22 @@ import { Header, ListChat, WrittingText } from '../../Components'
 
 const Chat = () => {
 
-  const { getContactDataById } = useGlobalContext()
-  const params = useParams()
-  const contactData = getContactDataById(params.contact_id)
+  const { contactListData } = useGlobalContext()
+  
+  const {
+    nickName,
+    profilePicture,
+    contactId
+  } = contactListData
 
   return (
     <div className='chat'>
-      <Header userName={contactData.name} 
-              userImg={contactData.thumbnail} 
-              userId={contactData.id} 
-              userConection={contactData.lastConection} 
+      <Header nickName={contactListData.nickName}
+              profilePicture={contactListData.profilePicture} 
+              contactId={contactListData.contactId}
       />
-      <ListChat dataMessage={contactData.message} />
-      <WrittingText contactData={contactData} />
+{/*       <ListChat dataMessage={contactData.message} />
+      <WrittingText contactData={contactData} /> */}
     </div>
   )
 }
