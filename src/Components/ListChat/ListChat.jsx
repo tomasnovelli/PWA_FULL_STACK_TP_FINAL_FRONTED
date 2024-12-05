@@ -4,7 +4,6 @@ import './listChat.css'
 
 const ListChat = ({ conversation }) => {
 
-console.log(conversation)
     return (
         <div className='chatBox'>
             {

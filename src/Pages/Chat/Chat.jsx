@@ -25,7 +25,7 @@ const Chat = () => {
   return (
     <div className='chat'>
       <Header {...contactChatData} contactLoading={contact_data_loading} />
-      <ListChat conversation={conversation} conversationLoading={isLoadingConversation} />
+      <ListChat conversation={conversation} />
       <WrittingText  />
     </div>
   )
