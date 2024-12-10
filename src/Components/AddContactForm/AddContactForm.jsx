@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { MdOutlinePhone } from "react-icons/md";
 import { MdOutlineSaveAlt } from "react-icons/md";
 import { useNavigate, useParams } from 'react-router-dom'
 import './AddContactFormStyles.css'
@@ -17,29 +16,7 @@ const AddContactForm = () => {
     }
     const {form_values_state, handleChangeInputValue} = useForm(formSchema)
     const [errors, setErrors] = useState('')
-/*     const addError = (error, origin) => {
-        setErrors((prevState) => ({ ...prevState, [origin]: error }))
-    }
-    const cleanError = (origin) => {
-        setErrors((prevState) => {
-            const updatedErrors = { ...prevState }
-            delete updatedErrors[origin]
-            return updatedErrors
-        })
-    }
-    const isFormValid = (formData) => {
-        let isValid = true
-        for (const prop in formSchema) {
-            const validateResult = formSchema[prop].validate(formData.get(prop))
-            if (validateResult) {
-                cleanError(prop)
-            } else {
-                addError(formSchema[prop].errorText, prop)
-                isValid = false
-            }
-        }
-        return isValid
-    } */
+
     const handleCreateContactForm = async (e) => {
         try{
             e.preventDefault()
@@ -48,12 +25,10 @@ const AddContactForm = () => {
                 body: JSON.stringify(form_values_state)
             })
             if(!response.ok) {
-                console.log({response})
                 return setErrors(response.payload.detail)
             }else{
                 navigate(`/contacts/${user_id}`)
             }
-            console.log({response})
         }
         catch (error) {
             error.message

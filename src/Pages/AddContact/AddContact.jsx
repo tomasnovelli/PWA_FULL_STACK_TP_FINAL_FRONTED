@@ -4,7 +4,8 @@ import './addContactStyle.css'
 import { AddContactForm } from '../../Components/index.js'
 
 const AddContact = () => {
-    const {user_id} = useParams()
+    const { user_id } = useParams()
+
     return (
         <div className='addContactContainer'>
             <div className='addContactHeader'>

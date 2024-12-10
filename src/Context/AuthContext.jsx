@@ -7,17 +7,16 @@ export const AuthContextProvider = ({ children }) => {
     const user_info = JSON.parse(sessionStorage.getItem('user_info'))
     const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(Boolean(access_token))
 
-
     useEffect(
-        ()=>{
+        () => {
             const access_token = sessionStorage.getItem('access_token')
-            if(access_token){
+            if (access_token) {
                 setIsAuthenticatedUser(true)
             }
-        }, 
-        [isAuthenticatedUser]
+        },
+        []
     )
-    
+
     const logOut = () => {
         sessionStorage.removeItem('access_token')
         sessionStorage.removeItem('user_info')

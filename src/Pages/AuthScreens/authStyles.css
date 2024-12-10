@@ -3,8 +3,17 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
     gap: 7px;
     background: linear-gradient(var(--app-color), var(--textArea-color));
+}
+.authPage::-webkit-scrollbar{
+    width: 4px;
+}
+.authPage::-webkit-scrollbar-thumb {
+    background-color: var(--app-color);  
+    border-radius: 20px;       
 }
 .authTitle{
     font-size: 33px;
@@ -25,9 +34,10 @@
     justify-content: space-around;
     align-items: center;
     border: 1px solid var(--textArea-color);
+    box-shadow: 1px 1px 8px rgba(88, 88, 88, 0.452);
     border-radius: 15px;
     padding: 5px;
-    margin: 2px;
+    margin: 2px 0px 10px 0px;
     width: 95vw;
     gap: 10px;
 }
@@ -106,7 +116,8 @@
     justify-content: center;
     gap: 10px;
     font-size: 15px;
-    width: 85%;
+    padding: 0px 20px;
+    margin-bottom: 25px;
 }
 
 .bold{

@@ -9,10 +9,9 @@ const useImageUpload = (userProfilePicture) => {
         const file_found = e.target.files[0]
         const FILE_MB_LIMIT = 2
         const lector_archivos = new FileReader()
-    
         if (file_found && file_found.size > FILE_MB_LIMIT * 1024 * 1024) {
             setImageErrors('Image must be less than 2 MB')
-        } else{
+        } else {
             lector_archivos.onloadend = () => {
                 console.log('carga finalizada')
                 setNewProfilePicture(lector_archivos.result)

@@ -15,15 +15,14 @@ const EmailVerify = () => {
             })
             if (!response.ok) {
                 setStatusMessage(response.payload.detail)
-                console.error(response.payload.detail || 'Error Verifying Email')
-            }else{
+            } else {
                 setStatusMessage(response.payload.detail)
             }
         }
         catch (error) {
-            console.error(error)
+            console.error(error.message)
         }
-        finally{
+        finally {
             setIsLoading(false)
         }
     }
@@ -40,19 +39,19 @@ const EmailVerify = () => {
                 <img className='whatsAppAuthinIcon' src="/images/whatsApp.png" alt="whatsApp" />
             </div>
             <div className='authForm'>
-            <h2 className='authTitle'>Email Verification</h2>
-            {
-                isLoading
-                    ?
-                    <span className='statusMessage'>Loading...</span>
-                    :
-                    <div className='verifyEmailFooter'>
-                        <span className='statusMessage'>{statusMessage}</span>
-                        <span className='goToLogin'>Please go to <Link to={'/login'}>Login</Link> </span>
-                    </div>
-            }
+                <h2 className='authTitle'>Email Verification</h2>
+                {
+                    isLoading
+                        ?
+                        <span className='statusMessage'>Loading...</span>
+                        :
+                        <div className='verifyEmailFooter'>
+                            <span className='statusMessage'>{statusMessage}</span>
+                            <span className='goToLogin'>Please go to <Link to={'/login'}>Login</Link> </span>
+                        </div>
+                }
             </div>
-            
+
         </div>
     )
 }

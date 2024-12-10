@@ -6,9 +6,9 @@ import { getUnnautenticatedHeaders, POST } from '../../../Helpers/http.fetching'
 import '../authStyles.css'
 import './forgotPasswordStyles.css'
 const ForgotPassword = () => {
+
     const [error, setError] = useState('')
     const [messageOk, setMessageOk] = useState('')
-    
     const formSchema = {
         'email': ''
     }
@@ -20,10 +20,9 @@ const ForgotPassword = () => {
                 headers: getUnnautenticatedHeaders(),
                 body: JSON.stringify(form_values_state)
             })
-            console.log({ response })
-            if(!response.ok){
+            if (!response.ok) {
                 setError(response.payload.detail)
-            } else{
+            } else {
                 setError('')
                 setMessageOk(response.message)
             }
@@ -51,14 +50,14 @@ const ForgotPassword = () => {
                     <div className='errorContainer'>
                         {
                             error ?
-                            <div className='authErrorMessageContainer'>
-                                <span>{error}</span>
-                            </div>
-                            :
-                            ( messageOk &&
-                            <div className='authSuccededMessageContainer'>
-                                <span>{messageOk}</span>
-                            </div>)
+                                <div className='authErrorMessageContainer'>
+                                    <span>{error}</span>
+                                </div>
+                                :
+                                (messageOk &&
+                                    <div className='authSuccededMessageContainer'>
+                                        <span>{messageOk}</span>
+                                    </div>)
                         }
                     </div>
                     <div className='btn-authContainer'>
@@ -69,9 +68,7 @@ const ForgotPassword = () => {
                     <span>Remember your password?  <Link className='bold' to='/login'>Login</Link></span>
                     <span>Don't have an account?  <Link className='bold' to='/register'>Register</Link></span>
                 </div>
-
             </div>
-
         </div>
     )
 }

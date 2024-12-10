@@ -5,7 +5,6 @@ import { useGlobalContext } from '../GlobalContext/GlobalContext'
 import { DELETE, getAuthenticatedHeaders, PUT } from '../../Helpers/http.fetching'
 import ENVIROMENT from '../../Enviroment/enviroment'
 
-
 const ChatDropdownMenu = () => {
     const {user_id, contact_id} = useParams()
     const navigate = useNavigate()
@@ -13,7 +12,6 @@ const ChatDropdownMenu = () => {
         dropdown,
         setDropdown,
         handleOpenCloseDropDownMenu,
-        handleCloseDropdown,
         setConversation 
     } = useGlobalContext()
 

@@ -9,7 +9,6 @@ const ContactListFooter = ({ activeSite }) => {
     {
       icon: "bi bi-chat-left-text-fill",
       site: 'contacts'
-
     },
     {
       icon: "bi bi-people-fill",

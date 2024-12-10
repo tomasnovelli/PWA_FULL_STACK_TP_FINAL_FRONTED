@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { createContext, useContext } from 'react'
-import { getContactDatabase, saveContactDatabase } from '../../Helpers/chatData'
 
 const GlobalContext = createContext()
 
@@ -13,16 +12,7 @@ export const GlobalContextProvider = ({ children }) => {
     const [navigationState, setNavigationState] = useState('contacts')
     const [errors, setErrors] = useState('')
     const [conversation, setConversation] = useState([])
-    /* const getContactDataById = (id) => getContactDatabase().find(contactos => contactos.id === id) */
-    /* const getContactIndex = (id, contactList) => contactList.findIndex(contact => contact.id === id) */
 
-/*     const updateContact = (updatedContactData) => {
-        const updatedContactListData = getContactDatabase()
-        const contactIndex = getContactIndex(updatedContactData.id, updatedContactListData)
-        updatedContactListData[contactIndex] = updatedContactData
-        setContactListData(prevContactListData => updatedContactListData)
-        saveContactDatabase(updatedContactListData)
-    } */
     const handleChangeContentValue = (e) => {
         setTextInput(e.target.value)
     }
@@ -38,7 +28,6 @@ export const GlobalContextProvider = ({ children }) => {
         }
     }
     useEffect(() => {
-        /* const contactListToSearch = contactListData */
         const newContactList = contactListData.filter(contact => contact.nickName.toLowerCase().includes(searchContact.toLowerCase()))
         setContactListData(
             (prevContactListData) => {return newContactList}
@@ -61,7 +50,6 @@ export const GlobalContextProvider = ({ children }) => {
                     dropdown,
                     setDropdown,
                     handleOpenCloseDropDownMenu,
-                    /* clearLocalStorage, */
                     handleCleanSearchInput,
                     navigationState,
                     setNavigationState,

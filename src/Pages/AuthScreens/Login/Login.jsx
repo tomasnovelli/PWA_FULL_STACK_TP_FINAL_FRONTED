@@ -9,7 +9,7 @@ const Login = () => {
 
     const navigate = useNavigate()
     const [error, setErrors] = useState('')
-    
+
     const formShcema = {
         'email': '',
         'password': ''
@@ -24,21 +24,17 @@ const Login = () => {
                 body: JSON.stringify(form_values_state)
             })
             if (!response.ok) {
-                console.log({ response })
                 return setErrors(response.message)
-            } 
+            }
             const access_token = response.payload.token
             sessionStorage.setItem('access_token', access_token)
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user))
-
-            /* window.location.reload() */
-            
-            navigate(`/contacts/${response.payload.user.id}`)
+            window.location.reload()
+            /* navigate(`/contacts/${response.payload.user.id}`) */
         }
         catch (error) {
-            error.message
+            console.error(error.message)
         }
-
     }
     return (
         <div className='authPage'>
@@ -64,18 +60,15 @@ const Login = () => {
                             </div>
                         }
                     </div>
-
                     <div className='btn-authContainer'>
                         <button className='btn-authSubmit' type='submit'>Login</button>
                     </div>
-
                 </form>
                 <div className='authFooter'>
                     <span>If you don't have an account yet, you can  <Link className='bold' to={"/register"}>Register here</Link></span>
                     <span>Forgot your password?  <Link className='bold' to={'/forgot-password'}>Reset password here</Link></span>
                 </div>
             </div>
-
         </div>
     )
 }

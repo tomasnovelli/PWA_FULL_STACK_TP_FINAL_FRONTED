@@ -33,7 +33,6 @@ const ResetPassword = () => {
             } else {
                 setResponseFetch(response.message)
             }
-            console.log({ response })
         }
         catch (error) {
             error.message
@@ -56,9 +55,9 @@ const ResetPassword = () => {
                         <input className='authInputsBorder' name='confirm_password' id='confirm_password' placeholder='Pepe1234' type='password' onChange={handleChangeInputValue} />
                     </div>
                     <span className='forgotPasswordInstruction'>
-                        Must Contain: 
-                        8 - 15 characters,  
-                        1 uppercase letter,  
+                        Must Contain:
+                        8 - 15 characters,
+                        1 uppercase letter,
                         1 lowercase letter,
                         1 number
                     </span>

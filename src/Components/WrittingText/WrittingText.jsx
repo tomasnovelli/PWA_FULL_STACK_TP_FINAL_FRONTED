@@ -9,24 +9,20 @@ const WrittingText = () => {
 
     const { contact_id } = useParams()
     const { textInput, setTextInput, setConversation, handleChangeContentValue } = useGlobalContext()
-    
+
     const handleSendNewMessage = async (e) => {
-        try{
+        try {
             e.preventDefault()
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/messages/send/${contact_id}`, {
                 headers: getAuthenticatedHeaders(),
-                body: JSON.stringify({content: textInput})
+                body: JSON.stringify({ content: textInput })
             })
             if (response.ok) {
-                console.log(response.message)
                 setTextInput('')
                 setConversation(response.payload.conversation)
             }
-            else {
-                console.log(response.message)
-            }
         }
-        catch(error){
+        catch (error) {
             console.error(error.message)
         }
     }

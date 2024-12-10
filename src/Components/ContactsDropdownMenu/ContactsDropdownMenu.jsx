@@ -10,7 +10,6 @@ const ContactsDropdownMenu = ({ user_id }) => {
 
     const {
         dropdown,
-        setDropdown,
         handleOpenCloseDropDownMenu,
         handleCloseDropdown
     } = useGlobalContext()
@@ -58,7 +57,6 @@ const ContactsDropdownMenu = ({ user_id }) => {
                         </div>
                     }
                 </div>
-
             }
             <button className='burgerMenu' onClick={handleOpenCloseDropDownMenu}>
                 <i className="bi bi-three-dots-vertical"></i>

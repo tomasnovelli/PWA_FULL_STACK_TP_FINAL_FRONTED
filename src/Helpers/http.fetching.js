@@ -10,7 +10,6 @@ export const POST = async (URL_API, params) => {
     catch (error) {
         throw error
     }
-
 }
 
 export const GET = async (URL_API, params) => {
@@ -41,15 +40,15 @@ export const PUT = async (URL_API, params) => {
     }
 }
 
-export const DELETE = async(URL_API, params) =>{
-    try{
+export const DELETE = async (URL_API, params) => {
+    try {
         const response = await fetch(URL_API, {
             method: 'DELETE',
             ...params
         })
         return response.json()
     }
-    catch(error){
+    catch (error) {
         console.log(error)
         throw error
     }
@@ -70,4 +69,4 @@ const getAuthenticatedHeaders = () => {
     return authValue
 }
 
-export {getAuthenticatedHeaders, getUnnautenticatedHeaders }
+export { getAuthenticatedHeaders, getUnnautenticatedHeaders }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './contactCardsStyle.css'
-import { contactLastMessage } from '../../Helpers/chatData'
 import { useGlobalContext } from '../GlobalContext/GlobalContext'
 const ContactCards = ({ contactData }) => {
 
@@ -10,12 +9,12 @@ const ContactCards = ({ contactData }) => {
         contactId,
         nickName,
         userName,
-        email,
         profilePicture,
         lastMessage
     } = contactData
-    /* const lastMessage = contactLastMessage(message) */
+
     const {user_id} = useParams()
+    
     return (
         <div className='contactsCardsContainer'>
             <div className='containerImg'>

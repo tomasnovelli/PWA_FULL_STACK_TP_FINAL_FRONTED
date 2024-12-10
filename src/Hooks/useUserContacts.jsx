@@ -5,15 +5,13 @@ import { useGlobalContext } from "../Components/GlobalContext/GlobalContext"
 
 
 const useUserContacts = (user_id) => {
-    /* const [contactList, setContactList] = useState([]) */
-    const {contactListData, setContactListData} = useGlobalContext()
 
+    const { setContactListData } = useGlobalContext()
     const [isLoadingContacts, setIsLoadingContacts] = useState(true)
     const getUserContacts = async () => {
         const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/user/contacts/${user_id}`, {
             headers: getAuthenticatedHeaders()
         })
-        console.log({response})
         if (response.ok){
             setContactListData(response.payload.contacts)
             setIsLoadingContacts(false)
@@ -25,7 +23,7 @@ const useUserContacts = (user_id) => {
         },
         []
     )
-    return { isLoadingContacts}
+    return { isLoadingContacts }
 }
 
 export default useUserContacts

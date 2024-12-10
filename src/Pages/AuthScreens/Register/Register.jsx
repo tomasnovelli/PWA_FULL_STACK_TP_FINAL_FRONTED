@@ -27,7 +27,6 @@ const Register = () => {
             headers: getUnnautenticatedHeaders(),
             body: JSON.stringify(form_values_state)
         })
-        console.log({ response })
         if (!response.ok) {
             return setErrors(response.payload.detail)
         }
@@ -54,14 +53,27 @@ const Register = () => {
                     <div>
                         <label htmlFor='userName'>UserName:</label>
                         <input className='authInputsBorder' name='userName' id='userName' placeholder='pepe' autoComplete='off' type='text' onChange={handleChangeInputValue} />
+                        <span>
+                        Must Contain: 
+                        3 - 20 characters, 
+                        cant be empty, 
+                        numbers & special characters arent allowed
+                        </span>
                     </div>
                     <div>
                         <label htmlFor='email'>Email:</label>
-                        <input className='authInputsBorder' name='email' id='email' type= 'email' placeholder='pepe@gmail.com' onChange={handleChangeInputValue} />
+                        <input className='authInputsBorder' name='email' id='email' type='email' placeholder='pepe@gmail.com' onChange={handleChangeInputValue} />
                     </div>
                     <div>
                         <label htmlFor='password'>Password:</label>
                         <input className='authInputsBorder' name='password' id='password' placeholder='pepe123' type='password' onChange={handleChangeInputValue} />
+                        <span className='forgotPasswordInstruction'>
+                        Must Contain:
+                        8 - 15 characters,
+                        1 uppercase letter,
+                        1 lowercase letter,
+                        1 number
+                    </span>
                     </div>
                     <div className='profilePictureContainer'>
                         <label htmlFor='profilePicture'>Profile Picture</label>
@@ -86,7 +98,9 @@ const Register = () => {
                     </div>
                 </form>
                 <div className='authFooter'>
-                    <span>If you already have an account <Link className='bold' to={"/login"}>Login</Link></span>
+                    <span>
+                        If you already have an account <Link className='bold' to={"/login"}>Login</Link>
+                    </span>
                 </div>
             </div>
         </div>
