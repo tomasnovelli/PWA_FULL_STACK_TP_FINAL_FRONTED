@@ -47,6 +47,7 @@ export const DELETE = async(URL_API, params) =>{
             method: 'DELETE',
             ...params
         })
+        return response.json()
     }
     catch(error){
         console.log(error)

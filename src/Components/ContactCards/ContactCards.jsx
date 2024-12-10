@@ -11,7 +11,8 @@ const ContactCards = ({ contactData }) => {
         nickName,
         userName,
         email,
-        profilePicture
+        profilePicture,
+        lastMessage
     } = contactData
     /* const lastMessage = contactLastMessage(message) */
     const {user_id} = useParams()
@@ -26,7 +27,7 @@ const ContactCards = ({ contactData }) => {
                     <span className='lastConection'>10:43</span>
                 </div>
                 <div className='bottomContactCardInfo'>
-                    <span className='lastMessage'>LastMessage</span>
+                    <span className='lastMessage'>{lastMessage}</span>
                 </div>
             </Link>
         </div>
