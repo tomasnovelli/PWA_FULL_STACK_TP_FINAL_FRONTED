@@ -31,9 +31,9 @@ const Login = () => {
             sessionStorage.setItem('access_token', access_token)
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user))
 
-            window.location.reload()
+            /* window.location.reload() */
             
-            /* navigate(`/contacts/${response.payload.user.id}`) */
+            navigate(`/contacts/${response.payload.user.id}`)
         }
         catch (error) {
             error.message

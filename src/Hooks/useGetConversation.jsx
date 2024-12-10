@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { GET, getAuthenticatedHeaders } from '../Helpers/http.fetching'
 import ENVIROMENT from '../Enviroment/enviroment'
+import { useGlobalContext } from '../Components/GlobalContext/GlobalContext'
 
 const useGetConversation = (contact_id) => {
-    const [conversation, setConversation] = useState([])
+    
+    const {conversation, setConversation } = useGlobalContext()
     const [isLoadingConversation, setIsLoadingConversation] = useState(true)
-    const [conversationError, setConversationError] = useState('')
-
+    
     const getConversation = async () => {
         const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/messages/conversation/${contact_id}`, {
             headers: getAuthenticatedHeaders()
@@ -28,7 +29,6 @@ const useGetConversation = (contact_id) => {
 
     return {
         conversation,
-        conversationError,
         isLoadingConversation
     } 
 }

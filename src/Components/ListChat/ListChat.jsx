@@ -2,8 +2,8 @@ import React from 'react'
 import Message from '../Message/Message'
 import './listChat.css'
 
-const ListChat = ({ conversation }) => {
-
+const ListChat = ({conversation}) => {
+    
     return (
         <div className='chatBox'>
             {

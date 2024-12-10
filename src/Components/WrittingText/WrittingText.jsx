@@ -1,17 +1,16 @@
 import React from 'react'
 import './writtingText.css'
 import { useGlobalContext } from '../GlobalContext/GlobalContext'
-import { v4 as uuid } from 'uuid'
 import { useParams } from 'react-router-dom'
 import { getAuthenticatedHeaders, POST } from '../../Helpers/http.fetching'
 import ENVIROMENT from '../../Enviroment/enviroment'
-const WrittingText = ({ contactData }) => {
+import useGetContactChatData from '../../Hooks/useGetContactChatData'
+const WrittingText = () => {
 
     const { contact_id } = useParams()
-    const { textInput, handleChangeContentValue } = useGlobalContext()
+    const { textInput, setTextInput, setConversation, handleChangeContentValue } = useGlobalContext()
     
     const handleSendNewMessage = async (e) => {
-
         try{
             e.preventDefault()
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/messages/send/${contact_id}`, {
@@ -20,7 +19,8 @@ const WrittingText = ({ contactData }) => {
             })
             if (response.ok) {
                 console.log(response.message)
-                window.location.reload()
+                setTextInput('')
+                setConversation(response.payload.conversation)
             }
             else {
                 console.log(response.message)

@@ -1,32 +1,30 @@
 import React, { useState } from 'react'
 import { useGlobalContext } from '../GlobalContext/GlobalContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useAuthContext } from '../../Context/AuthContext'
 import './contactsDropdownMenuStyles.css'
-import { DELETE, getAuthenticatedHeaders } from '../../Helpers/http.fetching'
+import { getAuthenticatedHeaders, PUT } from '../../Helpers/http.fetching'
 import ENVIROMENT from '../../Enviroment/enviroment'
+
 const ContactsDropdownMenu = ({ user_id }) => {
-    const navigate = useNavigate()
-    
+
     const {
         dropdown,
         setDropdown,
         handleOpenCloseDropDownMenu,
-        handleCloseDropdown,
-        setErrors
+        handleCloseDropdown
     } = useGlobalContext()
+
     const { logOut } = useAuthContext()
     const [deleteAccountState, setDeleteAccountState] = useState(false)
     const handleDeleteYourAccount = async () => {
         try{
-            
-            const response = await DELETE(`${ENVIROMENT.URL_BACKEND}/api/user/delete-user-account/${user_id}`, {
+            const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/user/delete-user-account/${user_id}`, {
                 headers: getAuthenticatedHeaders()
             })
-            if(!response){
+            if(response){
                 logOut()
             }
-            
         }
         catch(error){
             console.error(error.message)

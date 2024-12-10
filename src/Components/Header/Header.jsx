@@ -8,7 +8,7 @@ import { useGlobalContext } from '../GlobalContext/GlobalContext';
 import ContactsDropdownMenu from '../ContactsDropdownMenu/ContactsDropdownMenu';
 
 
-const User = ({ userName, profilePicture, contactId, nickName, contactLoading }) => {
+const User = ({profilePicture, contactId, nickName, contactLoading }) => {
 
     const {
         dropdown,
@@ -28,7 +28,7 @@ const User = ({ userName, profilePicture, contactId, nickName, contactLoading })
                         <div className='interactiveButtons'>
                             <img className='whatsappIcon' src="/images/whatsApp.png" alt="whatsApp" width='100px' />
                         </div>
-                        <ContactsDropdownMenu />
+                        <ContactsDropdownMenu user_id={user_id} />
                     </div>
 
                     :

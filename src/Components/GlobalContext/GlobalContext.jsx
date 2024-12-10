@@ -12,6 +12,7 @@ export const GlobalContextProvider = ({ children }) => {
     const [dropdown, setDropdown] = useState(false)
     const [navigationState, setNavigationState] = useState('contacts')
     const [errors, setErrors] = useState('')
+    const [conversation, setConversation] = useState([])
     /* const getContactDataById = (id) => getContactDatabase().find(contactos => contactos.id === id) */
     /* const getContactIndex = (id, contactList) => contactList.findIndex(contact => contact.id === id) */
 
@@ -41,23 +42,15 @@ export const GlobalContextProvider = ({ children }) => {
         const newContactList = contactListData.filter(contact => contact.nickName.toLowerCase().includes(searchContact.toLowerCase()))
         setContactListData(
             (prevContactListData) => {return newContactList}
-
         )
     }, [searchContact])
-
     const handleOpenCloseDropDownMenu = () => setDropdown(!dropdown)
-/*     const clearLocalStorage = () => {
-        localStorage.clear('contactDatabase')
-        setDropdown(!dropdown)
-    } */
+
 
     return (
         <div>
             <GlobalContext.Provider value={
                 {
-                    /* getContactDataById,
-                    getContactIndex,
-                    updateContact, */
                     contactListData,
                     setContactListData,
                     handleChangeContentValue,
@@ -74,7 +67,9 @@ export const GlobalContextProvider = ({ children }) => {
                     setNavigationState,
                     handleCloseDropdown,
                     errors,
-                    setErrors
+                    setErrors,
+                    conversation, 
+                    setConversation
                 }
             }>
                 {children}
