@@ -4,7 +4,7 @@ import { useGlobalContext } from '../GlobalContext/GlobalContext'
 import { useParams } from 'react-router-dom'
 import { getAuthenticatedHeaders, POST } from '../../Helpers/http.fetching'
 import ENVIROMENT from '../../Enviroment/enviroment'
-import useGetContactChatData from '../../Hooks/useGetContactChatData'
+
 const WrittingText = () => {
 
     const { contact_id } = useParams()

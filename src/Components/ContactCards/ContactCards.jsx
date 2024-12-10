@@ -10,8 +10,10 @@ const ContactCards = ({ contactData }) => {
         nickName,
         userName,
         profilePicture,
-        lastMessage
+        lastMessage,
+        lastMessageDate
     } = contactData
+    const lastMessageTimestamp = new Date(lastMessageDate).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
 
     const {user_id} = useParams()
     
@@ -23,7 +25,13 @@ const ContactCards = ({ contactData }) => {
             <Link className='contactCard' to={`/contacts/${user_id}/chat/${contactId}`} onClick={handleCleanSearchInput}>
                 <div className='topContactCardInfo'>
                     <span>{nickName}</span>
-                    <span className='lastConection'>10:43</span>
+                    {
+                        !lastMessageDate
+                        ?
+                        <span className='lastConection'></span>
+                        :
+                        <span className='lastConection'>{lastMessageTimestamp}</span>
+                    }   
                 </div>
                 <div className='bottomContactCardInfo'>
                     <span className='lastMessage'>{lastMessage}</span>

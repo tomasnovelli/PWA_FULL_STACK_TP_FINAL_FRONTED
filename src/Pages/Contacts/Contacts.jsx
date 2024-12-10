@@ -4,7 +4,6 @@ import { useGlobalContext } from '../../Components/GlobalContext/GlobalContext'
 import { Link, useParams } from 'react-router-dom'
 import { ContactList, ContactListFooter, Header } from '../../Components/index.js'
 import Community from '../Community/Community.jsx'
-import ENVIROMENT from '../../Enviroment/enviroment.js'
 import useUserContacts from '../../Hooks/useUserContacts.jsx'
 
 const Contacts = () => {
@@ -21,7 +20,7 @@ const Contacts = () => {
     const { 
         isLoadingContacts 
     } = useUserContacts(user_id)
-    
+    console.log(contactListData)
     return (
         <>
             {

@@ -14,7 +14,6 @@ const useGetConversation = (contact_id) => {
         setIsLoadingConversation(false)
 
         if (response.ok) {
-            console.log({ response })
             setConversation(response.payload.conversation)
         }
     }
