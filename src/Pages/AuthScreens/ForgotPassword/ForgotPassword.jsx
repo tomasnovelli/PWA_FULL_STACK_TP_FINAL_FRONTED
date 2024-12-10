@@ -46,7 +46,7 @@ const ForgotPassword = () => {
                 <form className='authFormContainer' onSubmit={handleSubmitForgotPasswordForm}>
                     <div>
                         <label htmlFor='email'>Email</label>
-                        <input className='authInputsBorder' name='email' id='email' placeholder='pepe@gmail.com' onChange={handleChangeInputValue} />
+                        <input className='authInputsBorder' name='email' id='email' placeholder='pepe@gmail.com' type='email' onChange={handleChangeInputValue} />
                     </div>
                     <div className='errorContainer'>
                         {

@@ -8,7 +8,7 @@ import { useGlobalContext } from '../GlobalContext/GlobalContext';
 import ContactsDropdownMenu from '../ContactsDropdownMenu/ContactsDropdownMenu';
 
 
-const User = ({profilePicture, contactId, nickName, contactLoading }) => {
+const User = ({ profilePicture, contactId, nickName, contactLoading }) => {
 
     const {
         dropdown,
@@ -43,9 +43,7 @@ const User = ({profilePicture, contactId, nickName, contactLoading }) => {
                                     <div className='imgContainer'>
                                         <img className='userImg' src={profilePicture} alt={nickName + 'Img'} />
                                     </div>
-                                    <Link to={'/contacts/chat/' + contactId + '/info'} className='nameConection' onClick={handleCloseDropdown}>
-                                        <span className='userName'>{nickName}</span>
-                                    </Link>
+                                    <span className='userName'>{nickName}</span>
                                 </div>
                         }
                         <div className='interactiveButtons'>

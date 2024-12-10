@@ -49,11 +49,11 @@ const ResetPassword = () => {
                 <form className='authFormContainer' onSubmit={handleSubmitResetPasswordForm}>
                     <div>
                         <label htmlFor='password'>Password:</label>
-                        <input className='authInputsBorder' name='password' id='password' placeholder='Pepe1234' onChange={handleChangeInputValue} />
+                        <input className='authInputsBorder' name='password' id='password' placeholder='Pepe1234' type='password' onChange={handleChangeInputValue} />
                     </div>
                     <div>
                         <label htmlFor='confirm_password'>Confirm Password</label>
-                        <input className='authInputsBorder' name='confirm_password' id='confirm_password' placeholder='Pepe1234' onChange={handleChangeInputValue} />
+                        <input className='authInputsBorder' name='confirm_password' id='confirm_password' placeholder='Pepe1234' type='password' onChange={handleChangeInputValue} />
                     </div>
                     <span className='forgotPasswordInstruction'>
                         Must Contain: 

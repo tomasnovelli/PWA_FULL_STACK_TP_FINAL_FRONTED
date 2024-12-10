@@ -53,15 +53,15 @@ const Register = () => {
                 <form className='authFormContainer' onSubmit={handleSubmitRegisterForm}>
                     <div>
                         <label htmlFor='userName'>UserName:</label>
-                        <input className='authInputsBorder' name='userName' id='userName' placeholder='pepe' onChange={handleChangeInputValue} />
+                        <input className='authInputsBorder' name='userName' id='userName' placeholder='pepe' autoComplete='off' type='text' onChange={handleChangeInputValue} />
                     </div>
                     <div>
                         <label htmlFor='email'>Email:</label>
-                        <input className='authInputsBorder' name='email' id='email' placeholder='pepe@gmail.com' onChange={handleChangeInputValue} />
+                        <input className='authInputsBorder' name='email' id='email' type= 'email' placeholder='pepe@gmail.com' onChange={handleChangeInputValue} />
                     </div>
                     <div>
                         <label htmlFor='password'>Password:</label>
-                        <input className='authInputsBorder' name='password' id='password' placeholder='pepe123' onChange={handleChangeInputValue} />
+                        <input className='authInputsBorder' name='password' id='password' placeholder='pepe123' type='password' onChange={handleChangeInputValue} />
                     </div>
                     <div className='profilePictureContainer'>
                         <label htmlFor='profilePicture'>Profile Picture</label>

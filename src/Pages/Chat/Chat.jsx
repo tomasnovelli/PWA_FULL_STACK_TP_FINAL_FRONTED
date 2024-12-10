@@ -17,7 +17,6 @@ const Chat = () => {
     conversation,
     isLoadingConversation
   } = useGetConversation(contact_id)
-
   return (
     <div className='chat'>
       <Header {...contactChatData} contactLoading={contact_data_loading} />

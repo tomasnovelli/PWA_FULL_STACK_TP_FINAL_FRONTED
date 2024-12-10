@@ -1,28 +1,39 @@
 import React from 'react'
 import './ChatDropdownMenu.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useGlobalContext } from '../GlobalContext/GlobalContext'
 import { saveContactDatabase , getContactDatabase } from '../../Helpers/chatData'
+import { getAuthenticatedHeaders, PUT } from '../../Helpers/http.fetching'
+import ENVIROMENT from '../../Enviroment/enviroment'
 
 
-const ChatDropdownMenu = ({ userId }) => {
-
+const ChatDropdownMenu = () => {
+    const {user_id, contact_id} = useParams()
     const { 
-        setContactListData,
-        getContactIndex,
         dropdown,
         setDropdown,
         handleOpenCloseDropDownMenu,
-        handleCloseDropdown 
+        handleCloseDropdown,
+        setConversation 
     } = useGlobalContext()
 
-    const borrarmessageDeContacto = () => {
-        const contactDataBase = getContactDatabase()
-        const searchedContactIndex = getContactIndex(userId, contactDataBase)
-        contactDataBase[searchedContactIndex ].message = []
-        setContactListData(contactDataBase)
-        saveContactDatabase (contactDataBase)
-        setDropdown(!dropdown)
+    const borrarmessageDeContacto = async () => {
+        try{
+            const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/messages/delete-conversation/${user_id}/${contact_id}`, 
+                { 
+                    headers: getAuthenticatedHeaders() 
+                }
+            )
+            if(response){
+                setConversation(response.payload.detail)
+                setDropdown(!dropdown)
+            } else{
+                throw new Error(response.message)
+            }
+        }
+        catch(error){
+            console.error(error)
+        }
     }
 
     return (
@@ -30,8 +41,9 @@ const ChatDropdownMenu = ({ userId }) => {
             {
                 dropdown &&
                 <div className='chatDropdownMenu'>
-                    <Link className='contactInfoLink' onClick={handleCloseDropdown} to={'/contacts/chat/' + userId + '/info'}>See Contact</Link>
                     <button className='btn-cleanChat' onClick={borrarmessageDeContacto}>Clear Chat</button>
+                    <button className='btn-cleanChat deleteContact' onClick={handleCloseDropdown}>Delete Contact</button>
+                    
                 </div>
             }
             <button className='burgerMenu' onClick={handleOpenCloseDropDownMenu}>

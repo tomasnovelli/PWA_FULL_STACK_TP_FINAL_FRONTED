@@ -50,11 +50,11 @@ const Login = () => {
                 <form className='authFormContainer' onSubmit={handleSubmitLoginForm}>
                     <div>
                         <label htmlFor='email'>Email:</label>
-                        <input className='authInputsBorder' name='email' id='email' placeholder='pepe@gmail.com' onChange={handleChangeInputValue} />
+                        <input className='authInputsBorder' name='email' id='email' placeholder='pepe@gmail.com' type='email' onChange={handleChangeInputValue} />
                     </div>
                     <div>
                         <label htmlFor='password'>Password:</label>
-                        <input className='authInputsBorder' name='password' id='password' placeholder='Pepe1234' onChange={handleChangeInputValue} />
+                        <input className='authInputsBorder' name='password' id='password' placeholder='Pepe1234' type='password' onChange={handleChangeInputValue} />
                     </div>
                     <div className='errorContainer'>
                         {
