@@ -4,11 +4,17 @@ import useForm from '../../../Hooks/useForm'
 import { getUnnautenticatedHeaders, PUT } from '../../../Helpers/http.fetching'
 import ENVIROMENT from '../../../Enviroment/enviroment'
 import './resetPassword.css'
+import { useGlobalContext } from '../../../Components/GlobalContext/GlobalContext'
 const ResetPassword = () => {
 
     const { reset_token } = useParams()
     const [errors, setErrors] = useState('')
-    const [responseFetch, setResponseFetch] = useState('')
+    const {
+        messageOk, 
+        setMessageOk,
+        isLoading, 
+        setIsLoading
+    } = useGlobalContext()
 
     const formSchema = {
         'password': '',
@@ -19,7 +25,11 @@ const ResetPassword = () => {
     const handleSubmitResetPasswordForm = async (e) => {
         try {
             e.preventDefault()
+            setErrors('')
+            setMessageOk('')
+            setIsLoading(true)
             if (form_values_state.password !== form_values_state.confirm_password) {
+                setIsLoading(false)
                 return setErrors('Passwords do not match')
             } else {
                 setErrors('')
@@ -29,9 +39,11 @@ const ResetPassword = () => {
                 body: JSON.stringify(form_values_state)
             })
             if (!response.ok) {
+                setIsLoading(false)
                 return setErrors(response.payload.detail)
             } else {
-                setResponseFetch(response.message)
+                setIsLoading(false)
+                setMessageOk(response.message)
             }
         }
         catch (error) {
@@ -46,11 +58,11 @@ const ResetPassword = () => {
             <div className='authForm'>
                 <h1 className='authTitle'>Reset Password</h1>
                 <form className='authFormContainer' onSubmit={handleSubmitResetPasswordForm}>
-                    <div>
+                    <div className='inputsContainer'>
                         <label htmlFor='password'>Password:</label>
                         <input className='authInputsBorder' name='password' id='password' placeholder='Pepe1234' type='password' onChange={handleChangeInputValue} />
                     </div>
-                    <div>
+                    <div className='inputsContainer'>
                         <label htmlFor='confirm_password'>Confirm Password</label>
                         <input className='authInputsBorder' name='confirm_password' id='confirm_password' placeholder='Pepe1234' type='password' onChange={handleChangeInputValue} />
                     </div>
@@ -63,15 +75,23 @@ const ResetPassword = () => {
                     </span>
                     <div className='errorContainer'>
                         {
+                            isLoading &&
+                                <div className='authIsLoadingMessageContainer'>
+                                    <span>Loading...</span>
+                                </div>
+                        }
+                    </div>
+                    <div className='errorContainer'>
+                        {
                             errors ?
                                 <div className='authErrorMessageContainer'>
                                     <span>{errors}</span>
                                 </div>
                                 :
-                                (responseFetch &&
+                                (messageOk &&
                                     <div className='authSuccededMessage'>
                                         <div className='authSuccededMessageContainer'>
-                                            <span>{responseFetch}</span>
+                                            <span>{messageOk}</span>
                                         </div>
                                         <div>
                                             Now you can go to <Link to='/login'>Login</Link>

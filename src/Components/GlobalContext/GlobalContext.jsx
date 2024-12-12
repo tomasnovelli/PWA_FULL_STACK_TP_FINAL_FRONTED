@@ -12,7 +12,8 @@ export const GlobalContextProvider = ({ children }) => {
     const [navigationState, setNavigationState] = useState('contacts')
     const [errors, setErrors] = useState('')
     const [conversation, setConversation] = useState([])
-
+    const [messageOk, setMessageOk] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
     const handleChangeContentValue = (e) => {
         setTextInput(e.target.value)
     }
@@ -57,7 +58,11 @@ export const GlobalContextProvider = ({ children }) => {
                     errors,
                     setErrors,
                     conversation, 
-                    setConversation
+                    setConversation,
+                    messageOk, 
+                    setMessageOk,
+                    isLoading, 
+                    setIsLoading
                 }
             }>
                 {children}

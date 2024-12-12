@@ -5,10 +5,17 @@ import { Link } from 'react-router-dom'
 import { getUnnautenticatedHeaders, POST } from '../../../Helpers/http.fetching'
 import '../authStyles.css'
 import './forgotPasswordStyles.css'
+import { useGlobalContext } from '../../../Components/GlobalContext/GlobalContext'
 const ForgotPassword = () => {
 
     const [error, setError] = useState('')
-    const [messageOk, setMessageOk] = useState('')
+    const {
+        messageOk, 
+        setMessageOk,
+        isLoading, 
+        setIsLoading
+    } = useGlobalContext()
+
     const formSchema = {
         'email': ''
     }
@@ -16,14 +23,19 @@ const ForgotPassword = () => {
     const handleSubmitForgotPasswordForm = async (e) => {
         try {
             e.preventDefault()
+            setError('')
+            setMessageOk('')
+            setIsLoading(true)
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/forgot-password`, {
                 headers: getUnnautenticatedHeaders(),
                 body: JSON.stringify(form_values_state)
             })
             if (!response.ok) {
+                setIsLoading(false)
                 setError(response.payload.detail)
             } else {
                 setError('')
+                setIsLoading(false)
                 setMessageOk(response.message)
             }
         }
@@ -43,9 +55,17 @@ const ForgotPassword = () => {
                     <p className='forgotPasswordInstruction'>We'll send you an email with the instructions to reset your password</p>
                 </div>
                 <form className='authFormContainer' onSubmit={handleSubmitForgotPasswordForm}>
-                    <div>
+                    <div className='inputsContainer'>
                         <label htmlFor='email'>Email</label>
                         <input className='authInputsBorder' name='email' id='email' placeholder='pepe@gmail.com' type='email' onChange={handleChangeInputValue} />
+                    </div>
+                    <div className='errorContainer'>
+                        {
+                            isLoading &&
+                                <div className='authIsLoadingMessageContainer'>
+                                    <span>Loading...</span>
+                                </div>
+                        }
                     </div>
                     <div className='errorContainer'>
                         {

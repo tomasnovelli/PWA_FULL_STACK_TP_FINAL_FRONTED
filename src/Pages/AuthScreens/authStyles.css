@@ -45,7 +45,7 @@
     width: 85%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 17px;
     margin-bottom: 20px;
 }
 
@@ -66,6 +66,11 @@
 .authInputsBorder:focus {
     outline: none;
 }
+.inputsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
 .authErrorMessageContainer{
     display: flex;
     flex-direction: column;
@@ -82,6 +87,17 @@
     flex-direction: column;
     align-items: center;
     gap: 5px;
+}
+.authIsLoadingMessageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(248, 246, 141, 0.836);
+    border: 1px solid rgba(250, 253, 67, 0.836);
+    border-radius: 8px;
+    padding: 2px;
+    font-size: 13px;
+    width: 95%;
 }
 .authSuccededMessageContainer{
     display: flex;
