@@ -6,6 +6,7 @@ const GlobalContext = createContext()
 export const GlobalContextProvider = ({ children }) => {
 
     const [contactListData, setContactListData] = useState([])
+    const [filteredContacts, setFilteredContacts] = useState([])
     const [textInput, setTextInput] = useState('')
     const [searchContact, setSearchContact] = useState('')
     const [dropdown, setDropdown] = useState(false)
@@ -29,14 +30,17 @@ export const GlobalContextProvider = ({ children }) => {
         }
     }
     useEffect(() => {
-        const newContactList = contactListData.filter(contact => contact.nickName.toLowerCase().includes(searchContact.toLowerCase()))
-        setContactListData(
-            (prevContactListData) => {return newContactList}
-        )
-    }, [searchContact])
+        if(searchContact.trim() === ''){
+            setFilteredContacts(contactListData)
+        } else {
+            const newContactList = contactListData.filter(contact => contact.nickName.toLowerCase().includes(searchContact.toLowerCase()))
+            setFilteredContacts(newContactList)
+        }
+    }, [searchContact, contactListData])
+
     const handleOpenCloseDropDownMenu = () => setDropdown(!dropdown)
 
-
+    
     return (
         <div>
             <GlobalContext.Provider value={
@@ -62,7 +66,9 @@ export const GlobalContextProvider = ({ children }) => {
                     messageOk, 
                     setMessageOk,
                     isLoading, 
-                    setIsLoading
+                    setIsLoading,
+                    filteredContacts, 
+                    setFilteredContacts
                 }
             }>
                 {children}

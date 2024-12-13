@@ -61,7 +61,7 @@ const UpdateUserProfile = () => {
                             </div>
                         }
                         <label htmlFor='profilePicture'>Select Your Profile Picture</label>
-                        <input name='profilePicture' id='profilePicture' type='file' onChange={handleChangeFile} accept='image/*' />
+                        <input className='' name='profilePicture' id='profilePicture' type='file' onChange={handleChangeFile} accept='image/*' />
                     </div>
                     <div>
                         <label htmlFor='userName'>Change Username:</label>

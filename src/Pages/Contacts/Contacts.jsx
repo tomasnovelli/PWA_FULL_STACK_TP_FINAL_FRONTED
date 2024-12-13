@@ -15,12 +15,13 @@ const Contacts = () => {
         searchContact,
         navigationState,
         handleCloseDropdown,
-        errors 
+        errors,
+        filteredContacts 
     } = useGlobalContext()
     const { 
         isLoadingContacts 
     } = useUserContacts(user_id)
-    console.log(contactListData)
+
     return (
         <>
             {
@@ -46,12 +47,12 @@ const Contacts = () => {
                             <span className='noContactsTextPosition'>Loading Contacts...</span>
                         </div> 
                         :(
-                            contactListData.length === 0 
+                            filteredContacts.length === 0 
                             ?
                             <div className='contactList'>
                                 <span className='noContactsTextPosition'>You don't have any contacts yet..</span>
                             </div>
-                            :<ContactList dataMock={contactListData} />
+                            :<ContactList dataMock={filteredContacts} />
                         )
                     }
                     <ContactListFooter activeSite={navigationState} />
