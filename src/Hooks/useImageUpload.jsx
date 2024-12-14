@@ -4,6 +4,7 @@ import { useState } from "react"
 const useImageUpload = (userProfilePicture) => {
 
     const [newProfilePicture, setNewProfilePicture] = useState(userProfilePicture)
+    
     const [imageErrors, setImageErrors] = useState('')
     const handleChangeFile = (e) => {
         const file_found = e.target.files[0]
@@ -25,7 +26,8 @@ const useImageUpload = (userProfilePicture) => {
     return {
         handleChangeFile,
         newProfilePicture,
-        imageErrors
+        imageErrors,
+        setNewProfilePicture
     }
 }
 

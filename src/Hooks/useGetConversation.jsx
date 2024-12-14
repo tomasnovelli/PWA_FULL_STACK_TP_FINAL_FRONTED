@@ -12,7 +12,6 @@ const useGetConversation = (contact_id) => {
             headers: getAuthenticatedHeaders()
         })
         setIsLoadingConversation(false)
-
         if (response.ok) {
             setConversation(response.payload.conversation)
         }
@@ -20,10 +19,12 @@ const useGetConversation = (contact_id) => {
     useEffect(
         () => {
             getConversation()
+            const interval = setInterval(getConversation, 3000)
+            return () => clearInterval(interval)
         },
         []
     )
-
+    
     return {
         conversation,
         isLoadingConversation

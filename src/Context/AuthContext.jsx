@@ -5,6 +5,7 @@ export const AuthContext = createContext()
 export const AuthContextProvider = ({ children }) => {
     const access_token = sessionStorage.getItem('access_token')
     const user_info = JSON.parse(sessionStorage.getItem('user_info'))
+
     const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(Boolean(access_token))
 
     useEffect(

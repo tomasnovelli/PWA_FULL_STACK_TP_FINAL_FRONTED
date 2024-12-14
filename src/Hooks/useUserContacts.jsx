@@ -24,6 +24,7 @@ const useUserContacts = (user_id) => {
         },
         []
     )
+
     return { isLoadingContacts }
 }
 

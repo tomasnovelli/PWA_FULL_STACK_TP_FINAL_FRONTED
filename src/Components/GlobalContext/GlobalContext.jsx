@@ -15,6 +15,8 @@ export const GlobalContextProvider = ({ children }) => {
     const [conversation, setConversation] = useState([])
     const [messageOk, setMessageOk] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const [currentUserProfileData, setCurrentUserProfileData] = useState({})
+
     const handleChangeContentValue = (e) => {
         setTextInput(e.target.value)
     }
@@ -68,7 +70,9 @@ export const GlobalContextProvider = ({ children }) => {
                     isLoading, 
                     setIsLoading,
                     filteredContacts, 
-                    setFilteredContacts
+                    setFilteredContacts,
+                    currentUserProfileData, 
+                    setCurrentUserProfileData
                 }
             }>
                 {children}

@@ -10,7 +10,6 @@ const Contacts = () => {
     const { user_id } = useParams()
 
     const {
-        contactListData,
         handleChangeContent,
         searchContact,
         navigationState,
@@ -50,7 +49,7 @@ const Contacts = () => {
                             filteredContacts.length === 0 
                             ?
                             <div className='contactList'>
-                                <span className='noContactsTextPosition'>You don't have any contacts yet..</span>
+                                <span className='noContactsTextPosition'>No Contacts Found..</span>
                             </div>
                             :<ContactList dataMock={filteredContacts} />
                         )

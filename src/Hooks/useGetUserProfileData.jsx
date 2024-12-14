@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GET, getAuthenticatedHeaders } from '../Helpers/http.fetching'
 import ENVIROMENT from '../Enviroment/enviroment'
+import { useGlobalContext } from '../Components/GlobalContext/GlobalContext'
 
 const useGetUserProfileData = (user_id) => {
     
-    const [currentUserProfileData, setCurrentUserProfileData] = useState({})
+    const { currentUserProfileData, setCurrentUserProfileData } = useGlobalContext()
+
     const [userErrors, setUserErrors] = useState('')
+    const [isLoadingData, setIsLoadingData] = useState(true)
     const getUserProfileData = async () => {
         const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/user/profile/${user_id}`, {
             headers: getAuthenticatedHeaders()
@@ -15,6 +18,7 @@ const useGetUserProfileData = (user_id) => {
         }
         else {
             setCurrentUserProfileData(response.payload.user)
+            setIsLoadingData(false)
         }
     }
     useEffect(
@@ -23,10 +27,12 @@ const useGetUserProfileData = (user_id) => {
         },
         []
     )
-    return {
-        currentUserProfileData,
-        userErrors
-    }
+    
+        return {
+            currentUserProfileData,
+            userErrors,
+            isLoadingData
+        }
 }
 
 export default useGetUserProfileData

@@ -4,7 +4,7 @@ import './contactCardsStyle.css'
 import { useGlobalContext } from '../GlobalContext/GlobalContext'
 const ContactCards = ({ contactData }) => {
 
-    const { handleCleanSearchInput } = useGlobalContext()
+    const { handleCloseDropdown } = useGlobalContext()
     const {
         contactId,
         nickName,
@@ -22,7 +22,7 @@ const ContactCards = ({ contactData }) => {
             <div className='containerImg'>
                 <img src={profilePicture} alt={'img_' + userName.toLowerCase()} />
             </div>
-            <Link className='contactCard' to={`/contacts/${user_id}/chat/${contactId}`} onClick={handleCleanSearchInput}>
+            <Link className='contactCard' to={`/contacts/${user_id}/chat/${contactId}`} onClick={handleCloseDropdown}>
                 <div className='topContactCardInfo'>
                     <span>{nickName}</span>
                     {

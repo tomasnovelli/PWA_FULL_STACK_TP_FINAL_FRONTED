@@ -4,13 +4,13 @@ import useForm from '../../Hooks/useForm'
 import useImageUpload from '../../Hooks/useImageUpload'
 import { getAuthenticatedHeaders, PUT } from '../../Helpers/http.fetching'
 import ENVIROMENT from '../../Enviroment/enviroment'
-import useGetUserProfileData from '../../Hooks/useGetUserProfileData'
 import './updateUserProfileStyles.css'
+
 
 const UpdateUserProfile = () => {
     const { user_id } = useParams()
     const [errors, setErrors] = useState('')
-    /* const {currentUserProfileData} = useGetUserProfileData(user_id) */
+
     const { userName, profilePicture } = JSON.parse(sessionStorage.getItem('user_info'))
 
     const navigate = useNavigate()

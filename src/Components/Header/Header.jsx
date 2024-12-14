@@ -11,9 +11,6 @@ import ContactsDropdownMenu from '../ContactsDropdownMenu/ContactsDropdownMenu';
 const User = ({ profilePicture, contactId, nickName, contactLoading }) => {
 
     const {
-        dropdown,
-        setDropdown,
-        handleOpenCloseDropDownMenu,
         handleCloseDropdown
     } = useGlobalContext()
     const { contact_id } = useParams()
