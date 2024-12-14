@@ -15,6 +15,22 @@ en cuanto al fronted, los mayores deafios estuvieron en relacion a los fetching,
 
 ----------------------------------------
 
+Librerias Usadas:
+BACK:
+    -Express
+    -Mongoose
+    -Nodemailer
+    -Dotenv
+    -BCRYP
+    -JWT token
+    -CORS
+
+FRONT:
+    Framework:
+        -React
+
+----------------------------------------
+
 Descripcion del proyecto
 
 El proyecto tiene un AUTH bastante completo y solido, donde podes registrar un usuario, loguearte, y reestablecer contraseña, una vez registrado tenes que verificar tu cuenta via mail (buscar por las dudas en correo no deseado), y si queres reestablecer la contraseña tambien envia mail para reestablecerla.
