@@ -16,7 +16,7 @@ const UpdateUserProfile = () => {
     const navigate = useNavigate()
     const formSchema = {
         'userName': userName,
-        'actualPassword': '',
+        'currentPassword': '',
         'password': '',
         'profilePicture': ''
     }
@@ -31,7 +31,6 @@ const UpdateUserProfile = () => {
                 body: JSON.stringify(form_values_state)
             })
             if (!response.ok) {
-                console.log({ response })
                 setErrors(response.payload.detail)
             } else {
                 sessionStorage.setItem('user_info', JSON.stringify(response.payload.detail))
@@ -69,10 +68,10 @@ const UpdateUserProfile = () => {
                     </div>
                     <div className='changePasswordContainer'>
                         <h3 className='changePasswordText'>Change Password</h3>
-                        <span>To change password please enter your actual password</span>
+                        <span>To change password please enter your current password</span>
                         <div>
-                            <label htmlFor='actualPassword'>Actual Password:</label>
-                            <input className='inputsBorder' name='actualPassword' id='actualPassword' placeholder='Pepe1234' type='password' onChange={handleChangeInputValue} />
+                            <label htmlFor='currentPassword'>current Password:</label>
+                            <input className='inputsBorder' name='currentPassword' id='currentPassword' placeholder='Pepe1234' type='password' onChange={handleChangeInputValue} />
                         </div>
                         <div>
                             <label htmlFor='password'>New Password:</label>
@@ -98,10 +97,8 @@ const UpdateUserProfile = () => {
                     <div className='btn-UpdateUserProfileContainer'>
                         <button className='btn-UpdateUserProfileSubmit' type='submit'>Update</button>
                     </div>
-
                 </form>
             </div>
-
         </div>
     )
 }

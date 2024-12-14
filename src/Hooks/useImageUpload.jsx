@@ -14,7 +14,6 @@ const useImageUpload = (userProfilePicture) => {
             setImageErrors('Image must be less than 2 MB')
         } else {
             lector_archivos.onloadend = () => {
-                console.log('carga finalizada')
                 setNewProfilePicture(lector_archivos.result)
             }
             if (file_found) {
