@@ -22,7 +22,7 @@ BACK:
     -Nodemailer
     -Dotenv
     -BCRYP
-    -JWT token
+    -Jsonwebtoken
     -CORS
 
 FRONT:
